@@ -12,6 +12,9 @@ The app has the following key features:
 
 
 ## Supporting Documents
+all documataion is posted on [github 
+pages]https://waimea-jmckinlay.github.io/level3-project-Online-Job-Board/ 
+
 
 Task Instructions:
 - [Instruction documents](docs/instructions/)
