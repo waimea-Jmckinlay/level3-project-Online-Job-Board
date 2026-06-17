@@ -2,128 +2,158 @@
 
 ## Identified Problem or Need
 
-Replace this text with a clearly stated problem or need that exists that your project will attempt to solve / fulfil.
+unenplyment or lack of jobs now my website won't make jobs for people but it's a place
+where people can post jobs of chores for a form of payment the those in need of work/job or are 
+looking for a side hussle 
 
 
 ## End-User Requirements
 
-Replace this text with a description of your typical end-users and their specific needs / expectations / requirements.
+my intended end users are uninployed people looking for jobs or task they can do for payment
+but anyone could use this app if they are looking for a side huzzale or a quick payment from doing chores 
 
 
 ## Proposed Solution
 
-Replace this text with a brief statement about the system that you intend to create, including the key functionality it should have.
+in this app the user should be able to both accapet other jobs from other people to accapet
+and also post their own jobs / task if they need help or don't have the skills to complet it also 
+jobs or bissness can use this to get more employes the same way as posting a chore to be done
 
 
 # Relevant Implications
 
-## NAME OF IMPLICATION 1
+## Privacy 
 
-Replace this text with a clear explanation of what the implication means.
-
-### Relevance to the System
-
-Replace this text with an explanation of why the implication is relevant to this particular project.
-
-### Impact / Considerations
-
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
-
-
-
-## NAME OF IMPLICATION 2
-
-Replace this text with a clear explanation of what the implication means.
+this Implication means keeping the users safe by keeping their account / information private
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+this is inportant because the user haves to share some soure of sentive date such as a location 
+so the other user knows where to do the chore  but that could also be used harmfully
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+firstly we will add a rateing system so the job owner can see if this user is trust worthy 
+also the location will only be shown when the owner accaptes the other user to do the job 
+along with any contact information so they can talk about the fine detailes that couldn't be 
+spoken about online 
 
 
 
-## NAME OF IMPLICATION 3
+## functionality
 
-Replace this text with a clear explanation of what the implication means.
+this means the app must work it needs to do what it intended to do
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+if the app doesn't work then no one will be able to use it 
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+this will impact the app building process as I needto make sure it is all working 
+and functioning the way is should be so the users can use it
 
 
 
-## NAME OF IMPLICATION 4
+## Useabilaty 
 
-Replace this text with a clear explanation of what the implication means.
+this means the app is easy to use for the means of the targeted 
+end users 
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+this is relvent as my app wouldn't be able to solve the problem of uneployment if 
+no one is able to use the app at all 
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+I need to considerter the layout of all the links and buttons and to try keep 
+the app as simple as possable for the end user while still letting the app do 
+what it need to do 
 
 
 
-## NAME OF IMPLICATION 5
+## future profing
 
-Replace this text with a clear explanation of what the implication means.
+this implication means that the app doesn't become out dateded over time and is 
+still as usable in the futrue as it is now
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the implication is relevant to this particular project.
+this is relevance as in the future people are still going have chores to be done 
+and people are going need help getting jobs 
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this implication.
+this means not just does the app im making need to work but it will 
+need to work for years to come which i will need to take into consideration
+while coding the app
 
+
+
+
+## ethical
+
+this implication means that my app is ethical / true to it's morals 
+
+### Relevance to the System
+
+their are some very unethical jobs out their which I don't want my app to become
+assocated with which is why ethical is inportant to me
+
+### Impact / Considerations
+
+to deal with these 'jobs' i will create an admin system where these admin can remove the jobs 
+which breaks our eathics admin users should also be able to see the personal information of each user 
+so if they break eathics they can be reported stragh to the police   
 
 
 # User Experience (UX) Principles
 
-## NAME OF UX PRINCIPLE 1
+## focus on real users 
 
-Replace this text with a clear explanation of what the principle means.
-
-### Relevance to the System
-
-Replace this text with an explanation of why the principle is relevant to this particular project.
-
-### Impact / Considerations
-
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this principle.
-
-
-## NAME OF UX PRINCIPLE 2
-
-Replace this text with a clear explanation of what the principle means.
+the app must solve real user problems not mine 
+i can't assume anything 
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the principle is relevant to this particular project.
+this principle is relevante to my app because it's all about soulving unenployment a problem 
+that many paople have including me but this app isn't just for me it's for all the end users
 
 ### Impact / Considerations
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this principle.
+to ensure I focus on real users I will constant take feedback from many differnt real users
+while coding my app 
 
 
-## NAME OF UX PRINCIPLE 3
+## Accessibility
 
-Replace this text with a clear explanation of what the principle means.
+this means the user can easly access my app weather or not 
+they are colour blind dexletsit of any of the above 
 
 ### Relevance to the System
 
-Replace this text with an explanation of why the principle is relevant to this particular project.
+anyone and everyone could be a end user of my app so it's inportant
+they can all use it  
+
 
 ### Impact / Considerations
+while making the css i will keep in mind not ot use outrages colours
+like bright lime green or anything and to let the layout do more speaking
+than the colour 
 
-Replace this text with an explanation of what you will need to consider moving forward and how the project will be impacted by this principle.
+
+
+## Hierarchy:
+
+Organizing content visually using size, color, and spacing so users instantly know what is most important and where to look next
+
+### Relevance to the System
+
+I belive theirs going to be a lot of jobs people need doing all around the world so it's importing to layout everything in such a way 
+the helps the user understand whats going on or what to do  
+
+### Impact / Considerations
+I will keep this in mind when doing the css part of the website
+as it's only the css that effects the layout / colours 
 
