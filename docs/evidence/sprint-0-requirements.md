@@ -28,66 +28,80 @@ this Implication means keeping the users safe by keeping their account / informa
 
 ### Relevance to the System
 
-this is inportant because the user haves to share some soure of sentive date such as a location 
-so the other user knows where to do the chore  but that could also be used harmfully
+this is inportant because the user haves to share some soure of sentive date such as a location or
+contact info so the other user knows where to go but that could also be used harmfully and randomly 
+sharing your number could be a bad thing 
 
 ### Impact / Considerations
 
-firstly we will add a rateing system so the job owner can see if this user is trust worthy 
-also the location will only be shown when the owner accaptes the other user to do the job 
+firstly I will add a rateing system so the job owner can see if this user is trust worthy 
+also the location and will only be shown when the owner accaptes the user to do his job/chore 
 along with any contact information so they can talk about the fine detailes that couldn't be 
-spoken about online 
+spoken about online I will also inform the user why they need to give us their location and contact info
+when making a account in this app
+
 
 
 
 ## functionality
 
-this means the app must work it needs to do what it intended to do
+this means the app must work it needs to do what it intended to do for the end-user 
+and work well such as good loading speed no bugs and dose everything link propley
+
 
 ### Relevance to the System
 
-if the app doesn't work then no one will be able to use it 
+if the app doesn't work then no one will be able to use it and that 
+would be a big problem and on top of that if it loads to slowly or haves to many 
+bugs then even if the app 'works' the user will lose intrest 
 
 ### Impact / Considerations
 
 this will impact the app building process as I needto make sure it is all working 
-and functioning the way is should be so the users can use it
+and functioning with good loading speeds all links work and little to no bugs.
 
 
 
 ## Useabilaty 
 
 this means the app is easy to use for the means of the targeted 
-end users 
+end users that it maches all ten of the nielsen useabilaty Heuristics
+if users can undo or avoird misstakes if it's easy to reconoise that things do 
+rather than recall dose it mach real world things and is the status allways shown 
 
 ### Relevance to the System
 
-this is relvent as my app wouldn't be able to solve the problem of uneployment if 
-no one is able to use the app at all 
+this is relavate as if i want my app to be usable it needs to mach as many of the ten heuristics 
+as possable to help my users exparants as if they don't have a good expartants they an't going 
+use that app again
 
 ### Impact / Considerations
 
 I need to considerter the layout of all the links and buttons and to try keep 
-the app as simple as possable for the end user while still letting the app do 
-what it need to do 
+the app as simple as possable for the end user and use images or colours found in the 
+real world to help users Recognise what each link or button does. I need to tell the user what went 
+wrong if somthing didn't work and offer sultions to fix it 
 
 
 
 ## future profing
 
 this implication means that the app doesn't become out dateded over time and is 
-still as usable in the futrue as it is now
+still as usable in the futrue and can easly be updated and sometimes can it update it self
+can it be expanded with out having to start from scarch
 
 ### Relevance to the System
 
 this is relevance as in the future people are still going have chores to be done 
-and people are going need help getting jobs 
+and people are going need help getting jobs so it's inportant that over time this 
+app can change to what people need in the future
 
 ### Impact / Considerations
 
 this means not just does the app im making need to work but it will 
 need to work for years to come which i will need to take into consideration
-while coding the app
+while coding the app how easy it is to change / add new features and if the code 
+is easy to change / update
 
 
 
@@ -95,17 +109,21 @@ while coding the app
 ## ethical
 
 this implication means that my app is ethical / true to it's morals 
+even if the law doesn't requare it 
 
 ### Relevance to the System
 
 their are some very unethical jobs out their which I don't want my app to become
-assocated with which is why ethical is inportant to me
+assocated with which is why ethical is inportant to me and also people could be harmed in person
+as a location will have to be shared at some point so the job can be done
 
 ### Impact / Considerations
 
 to deal with these 'jobs' i will create an admin system where these admin can remove the jobs 
 which breaks our eathics admin users should also be able to see the personal information of each user 
-so if they break eathics they can be reported stragh to the police   
+so if they break eathics they can be reported stragh to the police and we will use a rating system for
+users to show if they are  trust worthy or not and give a warning about their bad rating before the job owner 
+can accapet them for the job   
 
 
 # User Experience (UX) Principles
