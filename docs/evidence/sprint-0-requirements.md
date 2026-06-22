@@ -11,6 +11,8 @@ looking for a side hussle
 
 my intended end users are uninployed people looking for jobs or task they can do for payment
 but anyone could use this app if they are looking for a side huzzale or a quick payment from doing chores 
+from anywhere in the world which means we may have to sourt jobs by countres so users don't choese jobs 
+from pennsylvania while th user is in Afcia
 
 
 ## Proposed Solution
@@ -25,12 +27,13 @@ jobs or bissness can use this to get more employes the same way as posting a cho
 ## Privacy 
 
 this Implication means keeping the users safe by keeping their account / information private
+from other users so the users can't be harmed by other users
 
 ### Relevance to the System
 
 this is inportant because the user haves to share some soure of sentive date such as a location or
-contact info so the other user knows where to go but that could also be used harmfully and randomly 
-sharing your number could be a bad thing 
+contact info so the other user knows where to go but that could also be used harmfully, randomly 
+sharing your number and or giving your location will be a problem 
 
 ### Impact / Considerations
 
@@ -38,7 +41,7 @@ firstly I will add a rateing system so the job owner can see if this user is tru
 also the location and will only be shown when the owner accaptes the user to do his job/chore 
 along with any contact information so they can talk about the fine detailes that couldn't be 
 spoken about online I will also inform the user why they need to give us their location and contact info
-when making a account in this app
+when making a account in my app and explain when other users can or can't see the infomation  
 
 
 
@@ -109,21 +112,20 @@ is easy to change / update
 ## ethical
 
 this implication means that my app is ethical / true to it's morals 
-even if the law doesn't requare it 
+even if the law doesn't requare it to be 
 
 ### Relevance to the System
 
 their are some very unethical jobs out their which I don't want my app to become
-assocated with which is why ethical is inportant to me and also people could be harmed in person
-as a location will have to be shared at some point so the job can be done
+assocated with which is why ethical is inportant to me/ my app as I don't want to help
+people like traffeckers 
 
 ### Impact / Considerations
 
 to deal with these 'jobs' i will create an admin system where these admin can remove the jobs 
 which breaks our eathics admin users should also be able to see the personal information of each user 
-so if they break eathics they can be reported stragh to the police and we will use a rating system for
-users to show if they are  trust worthy or not and give a warning about their bad rating before the job owner 
-can accapet them for the job   
+so if they break eathics they can be reported stragh to the police and with our rating system admins 
+can leave a rating about these jobs the user keep making and if it happens to much they get baned 
 
 
 # User Experience (UX) Principles
@@ -131,17 +133,19 @@ can accapet them for the job
 ## focus on real users 
 
 the app must solve real user problems not mine 
-i can't assume anything 
+I can't assume anything the other user's want and have to 
+ask them what they want 
 
 ### Relevance to the System
 
 this principle is relevante to my app because it's all about soulving unenployment a problem 
 that many paople have including me but this app isn't just for me it's for all the end users
+so they need to have a say on what they do
 
 ### Impact / Considerations
 
 to ensure I focus on real users I will constant take feedback from many differnt real users
-while coding my app 
+while coding my app and documantate it in the other sprint pages
 
 
 ## Accessibility
@@ -158,7 +162,7 @@ they can all use it
 ### Impact / Considerations
 while making the css i will keep in mind not ot use outrages colours
 like bright lime green or anything and to let the layout do more speaking
-than the colour 
+than the colour sadly not much I can do for blind people 
 
 
 
@@ -169,9 +173,10 @@ Organizing content visually using size, color, and spacing so users instantly kn
 ### Relevance to the System
 
 I belive theirs going to be a lot of jobs people need doing all around the world so it's importing to layout everything in such a way 
-the helps the user understand whats going on or what to do  
+the helps the user understand whats going on or what to do as their is going be alot going on 
 
 ### Impact / Considerations
 I will keep this in mind when doing the css part of the website
-as it's only the css that effects the layout / colours 
+as it's only the css that effects the layout / colours and I need 
+to make it so users can easly find there way around the website
 
