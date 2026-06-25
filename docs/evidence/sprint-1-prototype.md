@@ -27,16 +27,18 @@ Develop a design for the database and a UI prototype that simulates the key func
 
 Replace this text with notes regarding the DB design.
 
-![DB Design](screenshots/placeholder.png)
+![DB Design](screenshots/draw-sql.png)
 
 
 ### Required Data Input
 
-Replace this text with a description of what data will be input, and where / how it will be obtained.
+when the user makes an account they will input their name the pasword (only hash pasword storded) their rough location 
+and contact information. once job is done the user will be rated by the job owner on porformants 
 
 ### Required Data Output
 
-Replace this text with a description of the outputs for the system - what types of data will be displayed?
+the user information will be displayed but only for job owners and the other way around if they accpted each other e.g location and contact-info but before that the owner 
+can see the user rating to deside if he wants this user for his job and his own rating is displayed on the job he posted 
 
 ### Required Data Processing
 

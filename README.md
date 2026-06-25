@@ -2,13 +2,15 @@
 
 ## Project Description
 
-This is an app that ... 
+lets people post jobs r and chores for others who can accapt 
+them and gain money
 
 The app has the following key features:
-- Feature one
-- Feature two
-- Feature three
-- ...
+- people will have their own login which they can make with their own info
+- anyone with a account can post a job for others to accapt
+- users can accapt jobs or chores from anyone but does need to be cearfull where the job is
+- admin users can do what nomal users do but also can remove jobs others have posted if they are 
+somthing unefcial 
 
 
 ## Supporting Documents
