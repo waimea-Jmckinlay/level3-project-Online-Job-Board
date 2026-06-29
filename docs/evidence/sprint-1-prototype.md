@@ -42,24 +42,25 @@ can see the user rating to deside if he wants this user for his job and his own 
 
 ### Required Data Processing
 
-Replace this text with a description of how the data will be processed to achieve the desired output(s) - any processes / formulae?
+when processing the password we will hash it and add a salt so we aren't storing the password but the hash of one for 
+safety reasions  
 
 
 ## UI 'Flow'
 
 The first stage of prototyping was to explore how the UI might 'flow' between states, based on the required functionality.
 
-This Figma demo shows the initial design for the UI 'flow':
+This penport demo shows the initial design for the UI 'flow':
 
-**FIGMA FLOW - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT**
+**FIGMA FLOW - PLACE THE penport EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT**
 
 ### Testing
 
-Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
+I had one of my class friends move around and use what was their at the time  
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+I made changes as they played around with it as not all conections where conected
 
 *IMPROVED FIGMA FLOW - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
 
