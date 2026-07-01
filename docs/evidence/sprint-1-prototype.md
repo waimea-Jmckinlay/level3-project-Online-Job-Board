@@ -52,7 +52,7 @@ The first stage of prototyping was to explore how the UI might 'flow' between st
 
 This penport demo shows the initial design for the UI 'flow':
 
-**FIGMA FLOW - PLACE THE penport EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT**
+https://design.penpot.app/#/view?file-id=f0485fb1-4e63-8165-8008-3908e675a64e&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=6956fb43-d0b4-807f-8008-4215d766031a
 
 ### Testing
 
@@ -60,9 +60,10 @@ I had one of my class friends move around and use what was their at the time
 
 ### Changes / Improvements
 
-I made changes as they played around with it as not all conections where conected
+I made changes as they played around with it as not all conections where conected so i fixed that
 
-*IMPROVED FIGMA FLOW - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+https://design.penpot.app/#/view?file-id=f0485fb1-4e63-8165-8008-3908e675a64e&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=6956fb43-d0b4-807f-8008-4215d766031a
+
 
 
 ## Initial UI Prototype
@@ -71,17 +72,19 @@ The next stage of prototyping was to develop the layout for each screen of the U
 
 This Figma demo shows the initial layout design for the UI:
 
-*FIGMA PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+https://design.penpot.app/#/view?file-id=a234c67f-eb39-8116-8008-3f6d0a90e616&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=6956fb43-d0b4-807f-8008-4220bc76509d
 
 ### Testing
 
-Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
+for the testing i had a different user to test / play with it to make sure the layout is good and working
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+while testing the user recmend i had a feature where we could also deny users that apply for the job to shorten the list so i did that before I 
+added the link above so you can see it their if you go you your job post I also found i made a pontless page that I remove being the contact infomation 
+page once accpting a user to do the job as yu could just see their information by clicking oin their account
 
-*FIGMA IMPROVED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+https://design.penpot.app/#/view?file-id=a234c67f-eb39-8116-8008-3f6d0a90e616&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&index=0&share-id=6956fb43-d0b4-807f-8008-4220bc76509d
 
 
 ## Refined UI Prototype
