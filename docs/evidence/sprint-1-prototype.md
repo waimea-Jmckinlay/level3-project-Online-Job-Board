@@ -91,17 +91,19 @@ https://design.penpot.app/#/view?file-id=a234c67f-eb39-8116-8008-3f6d0a90e616&pa
 
 Having established the layout of the UI screens, the prototype was refined visually, in terms of colour, fonts, etc.
 
-This Figma demo shows the UI with refinements applied:
+This Figma demo shows the UI with refinements applied:  
 
 *FIGMA REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
 
 ### Testing
 
-Replace this text with notes about what you did to test the UI flow and the outcome of the testing.
+to test myself and a tester went though the prototype and descuss issuses and things
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+while creating this prototype I relize I missed a few things from the other prototype which nor me or my testeder relizes 
+I never made the page that lets the job owner user give a rating to the other user so i made that page and a way to and back from it but 
+giving a rating is required and a thing that tells others how many jobs the other user has done 
 
 *FIGMA IMPROVED REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
 
