@@ -93,7 +93,7 @@ Having established the layout of the UI screens, the prototype was refined visua
 
 This Figma demo shows the UI with refinements applied:  
 
-*FIGMA REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+https://design.penpot.app/#/view?file-id=6956fb43-d0b4-807f-8008-4222f81ef218&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=83dd9eca-2062-81d6-8008-5a78cc756210
 
 ### Testing
 
@@ -103,7 +103,7 @@ to test myself and a tester went though the prototype and descuss issuses and th
 
 while creating this prototype I relize I missed a few things from the other prototype which nor me or my testeder relizes 
 I never made the page that lets the job owner user give a rating to the other user so i made that page and a way to and back from it but 
-giving a rating is required and a thing that tells others how many jobs the other user has done 
+giving a rating by comniting on how well the user did the job.
 
 *FIGMA IMPROVED REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
 
