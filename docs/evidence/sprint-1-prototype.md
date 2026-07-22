@@ -30,6 +30,8 @@ Replace this text with notes regarding the DB design.
 ![DB Design](screenshots/draw-sql.png)
 
 
+
+
 ### Required Data Input
 
 when the user makes an account they will input their name the pasword (only hash pasword storded) their rough location 
@@ -72,19 +74,21 @@ The next stage of prototyping was to develop the layout for each screen of the U
 
 This Figma demo shows the initial layout design for the UI:
 
-https://design.penpot.app/#/view?file-id=a234c67f-eb39-8116-8008-3f6d0a90e616&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=6956fb43-d0b4-807f-8008-4220bc76509d
+https://design.penpot.app/#/view?file-id=64054412-1123-81ed-8008-5d1dfd684530&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=64054412-1123-81ed-8008-5d1e25540347
 
 ### Testing
 
-for the testing i had a different user to test / play with it to make sure the layout is good and working
+for the testing i had a few different user to test / play with it to make sure the layout is good and working
 
 ### Changes / Improvements
 
-while testing the user recmend i had a feature where we could also deny users that apply for the job to shorten the list so i did that before I 
-added the link above so you can see it their if you go you your job post I also found i made a pontless page that I remove being the contact infomation 
+while testing the user recmend i had a feature where we could also deny users that apply for the job to shorten the list so i did that 
+I also found i made a pontless page that I remove being the contact infomation 
 page once accpting a user to do the job as yu could just see their information by clicking oin their account
+also some users wanted to be login in as soon as they submited in the sign in page so i did they also wanted me to add a title to the first page so i called it job board because I didn't know what else to name it and they also said they wanted to change the seach when seaching for jobs to seach in locations rather than country as country may not be enough information to determ if this is a good job to do or not as it could still be too far away 
 
-https://design.penpot.app/#/view?file-id=a234c67f-eb39-8116-8008-3f6d0a90e616&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&index=0&share-id=6956fb43-d0b4-807f-8008-4220bc76509d
+https://design.penpot.app/#/view?file-id=a234c67f-eb39-8116-8008-3f6d0a90e616&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=6956fb43-d0b4-807f-8008-4220bc76509d
+
 
 
 ## Refined UI Prototype
@@ -92,6 +96,8 @@ https://design.penpot.app/#/view?file-id=a234c67f-eb39-8116-8008-3f6d0a90e616&pa
 Having established the layout of the UI screens, the prototype was refined visually, in terms of colour, fonts, etc.
 
 This Figma demo shows the UI with refinements applied:  
+
+I also did a few changes of my own I add a nav headder on to every page to make moving around easyer for any of the user's and they can allways cheach their rating when they want 
 
 https://design.penpot.app/#/view?file-id=6956fb43-d0b4-807f-8008-4222f81ef218&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=83dd9eca-2062-81d6-8008-5a78cc756210
 
