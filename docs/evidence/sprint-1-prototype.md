@@ -97,7 +97,7 @@ Having established the layout of the UI screens, the prototype was refined visua
 
 This Figma demo shows the UI with refinements applied:  
 
-I also did a few changes of my own I add a nav headder on to every page to make moving around easyer for any of the user's and they can allways cheach their rating when they want 
+I also did a few changes of my own I add a nav headder on to every page to make moving around easyer for any of the user's and they can allways cheach their rating when they want and I restantly just learned how to round the button and things so they don't look so blockey
 
 https://design.penpot.app/#/view?file-id=6956fb43-d0b4-807f-8008-4222f81ef218&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=83dd9eca-2062-81d6-8008-5a78cc756210
 
