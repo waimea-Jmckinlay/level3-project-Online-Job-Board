@@ -62,7 +62,7 @@ I had one of my class friends move around and use what was their at the time
 
 ### Changes / Improvements
 
-I made changes as they played around with it as not all conections where conected so i fixed that
+I made changes as the end user around with it as not all conections where conected so i fixed that other wise no changes 
 
 https://design.penpot.app/#/view?file-id=f0485fb1-4e63-8165-8008-3908e675a64e&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=6956fb43-d0b4-807f-8008-4215d766031a
 
@@ -87,8 +87,7 @@ I also found i made a pontless page that I remove being the contact infomation
 page once accpting a user to do the job as yu could just see their information by clicking oin their account
 also some users wanted to be login in as soon as they submited in the sign in page so i did they also wanted me to add a title to the first page so i called it job board because I didn't know what else to name it and they also said they wanted to change the seach when seaching for jobs to seach in locations rather than country as country may not be enough information to determ if this is a good job to do or not as it could still be too far away 
 
-https://design.penpot.app/#/view?file-id=a234c67f-eb39-8116-8008-3f6d0a90e616&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=6956fb43-d0b4-807f-8008-4220bc76509d
-
+https://design.penpot.app/#/view?file-id=a234c67f-eb39-8116-8008-3f6d0a90e616&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&index=0&share-id=bd31e32d-d69f-81e2-8008-6376d50a34bb
 
 
 ## Refined UI Prototype
@@ -99,7 +98,7 @@ This Figma demo shows the UI with refinements applied:
 
 I also did a few changes of my own I add a nav headder on to every page to make moving around easyer for any of the user's and they can allways cheach their rating when they want and I restantly just learned how to round the button and things so they don't look so blockey
 
-https://design.penpot.app/#/view?file-id=6956fb43-d0b4-807f-8008-4222f81ef218&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=83dd9eca-2062-81d6-8008-5a78cc756210
+https://design.penpot.app/#/view?file-id=6956fb43-d0b4-807f-8008-4222f81ef218&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&index=0&share-id=bd31e32d-d69f-81e2-8008-6375c5395cc1
 
 ### Testing
 
