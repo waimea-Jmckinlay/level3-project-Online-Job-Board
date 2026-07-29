@@ -96,7 +96,7 @@ Having established the layout of the UI screens, the prototype was refined visua
 
 This Figma demo shows the UI with refinements applied:  
 
-I also did a few changes of my own I add a nav headder on to every page to make moving around easyer for any of the user's and they can allways cheach their rating when they want and I restantly just learned how to round the button and things so they don't look so blockey
+I also did a few changes of my own I add a nav headder on to every page to make moving around easyer for any of the user's and they can allways cheach their rating when they want and I restantly just learned how to round the button and things so they don't look so blockey 
 
 https://design.penpot.app/#/view?file-id=6956fb43-d0b4-807f-8008-4222f81ef218&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&index=0&share-id=bd31e32d-d69f-81e2-8008-6375c5395cc1
 
@@ -106,9 +106,8 @@ to test myself and a tester went though the prototype and descuss issuses and th
 
 ### Changes / Improvements
 
-while creating this prototype I relize I missed a few things from the other prototype which nor me or my testeder relizes 
-I never made the page that lets the job owner user give a rating to the other user so i made that page and a way to and back from it but 
-giving a rating by comniting on how well the user did the job.
+so the end users didn't like the color choice to much they though the idea of a blue and red was fine but not the way it's been done as I was told if I was to use red i should use it more 
+and not just for the buttons and i was given a good site to use to find a good colour palate.
 
 *FIGMA IMPROVED REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
 
