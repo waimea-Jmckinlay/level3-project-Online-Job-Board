@@ -107,12 +107,13 @@ to test myself and a tester went though the prototype and descuss issuses and th
 ### Changes / Improvements
 
 so the end users didn't like the color choice to much they though the idea of a blue and red was fine but not the way it's been done as I was told if I was to use red i should use it more 
-and not just for the buttons and i was given a good site to use to find a good colour palate.
+and not just for the buttons and i was given a good site to use to find a good colour palate called realtime colour. after some exploring the differint colour palates I found a colour patten that 2 of my end users both like being this purple and dark blue style that you can see below
 
-*FIGMA IMPROVED REFINED PROTOTYPE - PLACE THE FIGMA EMBED CODE HERE - MAKE SURE IT IS SET SO THAT EVERYONE CAN ACCESS IT*
+https://design.penpot.app/#/view?file-id=8694f143-a620-8054-8008-663903162af5&page-id=f0485fb1-4e63-8165-8008-3908e675a64f&section=interactions&frame-id=0013c019-5066-804b-8008-39090ca72598&index=0&share-id=6f06cb60-262a-804c-8008-6c7f6b25c952
 
 
 ## Sprint Review
 
 Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
+this sprint has helped my project because now i know what my website is going look like and how it will work in hand with the data base 
 

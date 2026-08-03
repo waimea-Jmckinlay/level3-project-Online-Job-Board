@@ -41,7 +41,9 @@ firstly I will add a rateing system so the job owner can see if this user is tru
 also the location and will only be shown when the owner accaptes the user to do his job/chore 
 along with any contact information so they can talk about the fine detailes that couldn't be 
 spoken about online I will also inform the user why they need to give us their location and contact info
-when making a account in my app and explain when other users can or can't see the infomation  
+when making a account in my app and explain when other users can or can't see the infomation also
+I will force every user's to have a different password and I will use a hash function and salt to thurther 
+peotect other users privacy and urduce the the effictifness of ranbow tables    
 
 
 
