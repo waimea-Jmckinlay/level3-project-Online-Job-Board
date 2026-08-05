@@ -15,28 +15,51 @@
 #     SEED_DATA = "INSERT INTO name (...)" or None
 #----------------------------------------------------------------------------
 
-class NoteTable:
+class UserTable:
 
-    NAME = "note"
+    NAME = "users"
 
     SCHEMA = """
-        CREATE TABLE note (
+        CREATE TABLE users (
             id      INTEGER PRIMARY KEY AUTOINCREMENT,
-            title   TEXT NOT NULL,
-            body    TEXT,
-            pinned  INTEGER DEFAULT 0,
-            created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+           username TEXT NOT NULL,
+           real_name TEXT NOT NULL,
+           pasword_hash TEXT NOT NULL,
+           contact_info TEXT,
+           admin INTEGER,
+           rating TEXT
         )
     """
 
     SEED_DATA = """
-        INSERT INTO note (title, pinned, body)
-        VALUES
-            ("Welcome!",      1, "This is a demo application using Flask, Jinja and SQLite."),
-            ("Shopping List", 0, "Milk\nBread\nEggs\nCheese"),
-            ("Meeting Notes", 0, "Discussed project timeline.\n\nAction items:\n- Review design\n- Update docs"),
-            ("Recipe: Pasta", 0, "Ingredients:\n- 500g pasta\n- Tomato sauce\n- Garlic\n\nCook pasta, add sauce, enjoy!"),
-            ("Important!",    1, "Remember to backup your database regularly.")
+        INSERT INTO users (username, real_name, pasword_hash, contact_info, admin, rating)
+        VALUES ("bob",  sam, " scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252, phone number 54873657893, 0, do not recamend"),
+               ("cat", ham, "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252, phone number 4567834957, 1, hes good at everything ")
+
+    """
+
+class JobTable:
+
+    NAME = "jobs"
+
+    SCHEMA = """
+        CREATE TABLE jobs (
+            id      INTEGER PRIMARY KEY AUTOINCREMENT,
+           title TEXT NOT NULL,
+           notes TEXT NOT NULL,
+           due_by_date TEXT NOT NULL,
+           address TEXT NOT NULL,
+           user_id INTEGER NOT NULL,
+
+           FOREIGN KEY (user_id) REFERENCES users (id)
+        )
+    """
+
+    SEED_DATA = """
+        INSERT INTO jobs (title, notes, due_by_date, address, user_id)
+        VALUES ("Welcome!", repear my roof , "5/7/2029, 5th YUMMY,1 "),
+               ("cat my grass", "get paid for cutting my grass, by the 25 of may 2323, at 20 riverlake rod,1 ")
+
     """
 
 # Add more table classes here...
@@ -59,7 +82,7 @@ class NoteTable:
 #----------------------------------------------------------------------------
 
 TABLES = [
-    NoteTable,
-    # Add more tables here...
+    UserTable,
+    JobTable
 ]
 

@@ -25,11 +25,14 @@ Develop a design for the database and a UI prototype that simulates the key func
 
 ## Initial Database Design
 
-Replace this text with notes regarding the DB design.
+this data base desing is so users can signin and eather create a job post or accapted a job somone else has posted 
+this is what that data base looks like right now 
 
 ![DB Design](screenshots/draw-sql.png)
 
+update some of the things in the data base is wroung as if i used - in the text the website would take it as an equation so i had to swap it put with _ insted 
 
+![Alt text](screenshots/dv-v2.png)
 
 
 ### Required Data Input

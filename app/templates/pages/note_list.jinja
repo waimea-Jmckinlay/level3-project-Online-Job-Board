@@ -7,30 +7,13 @@
 
 {% block content %}
 
-    <h2>Notes</h2>
+    <h2>jobs</h2>
 
-    <section id="notes">
+    <section id="jobs">
 
-        {% for note in notes %}
+        {% for jobs in jobs %}
 
-            <div class="note {{ 'pinned' if note.pinned }}">
-
-                <header>
-                    <h3>{{ note.title }}</h3>
-                    {{ "📌" if note.pinned }}
-                </header>
-
-                <p>{{ note.body | paragraphs }}</p>
-
-                <footer>
-                    Created on {{ note.created | local | format }}
-                </footer>
-
-            </div>
-
-        {% else %}
-
-            <p>No Notes!</p>
+          
 
         {% endfor %}
 
