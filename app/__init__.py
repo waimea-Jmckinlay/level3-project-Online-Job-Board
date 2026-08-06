@@ -21,13 +21,13 @@ app = Flask(__name__)
 #===========================================================
 
 #-----------------------------------------------------------
-# Home page - Show all notes
+# Home page - Show all jobs
 #-----------------------------------------------------------
 @app.get("/")
 def show_jobs():
     with connect_db() as db:
         sql = """
-            SELECT id, title, note, due_by_date, address, user_id
+            SELECT id, title, notes, due_by_date, address, user_id
             FROM jobs
         """
         params = ()
@@ -39,7 +39,7 @@ def show_jobs():
         flash("Test WARNING message", "warning")
         flash("Test ERROR message", "error")
 
-        return render_template("pages/note_list.jinja", jobs=jobs)
+        return render_template("pages/jobs_list.jinja", jobs=jobs)
 
 
 #===========================================================

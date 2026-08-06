@@ -21,14 +21,18 @@ Implement the database, populated with test data. Create queries that retrieve t
     - Etc.
 
 
-## Testing FEATURE NAME HERE
+## haveing the db working 
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+here i wil be testing how well the db is working I will be doing this by given the db some seed data and 
+attmp to get the first page working which will show the seed data for all the jobs  
 
 **PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![Alt text](screenshots/db_working.png)
+(![Alt text](screenshots/first_try.png))
 
-![Placeholder](screenshots/placeholder.png)
-
+the db is working but I wasn't able to put it onto the first page yet 
+![Alt text](screenshots/second_try.png)
+at lest the page is working but still no jobs are showing
 ### Changes / Improvements
 
 Replace this text with notes any improvements you made as a result of the testing.

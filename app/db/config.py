@@ -32,9 +32,10 @@ class UserTable:
     """
 
     SEED_DATA = """
-        INSERT INTO users (username, real_name, pasword_hash, contact_info, admin, rating)
-        VALUES ("bob",  sam, " scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252, phone number 54873657893, 0, do not recamend"),
-               ("cat", ham, "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252, phone number 4567834957, 1, hes good at everything ")
+        INSERT INTO users (username, real_name, pasword_hash, contact_info, admin, rating )
+        VALUES            ("bob",  "sam", " scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", "do not recamend "),
+                          ("ham",  "damm", " scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", " will recamend ")
+               
 
     """
 
@@ -57,12 +58,34 @@ class JobTable:
 
     SEED_DATA = """
         INSERT INTO jobs (title, notes, due_by_date, address, user_id)
-        VALUES ("Welcome!", repear my roof , "5/7/2029, 5th YUMMY,1 "),
-               ("cat my grass", "get paid for cutting my grass, by the 25 of may 2323, at 20 riverlake rod,1 ")
+        VALUES ("Welcome!", "repear my roof" , "5/7/2029", "5th YUMMY", "1")
+
 
     """
 
-# Add more table classes here...
+class OffersTable:
+
+    NAME = "offers"
+
+    SCHEMA = """
+        CREATE TABLE offers (
+            id      INTEGER PRIMARY KEY AUTOINCREMENT,
+           job_id INTEGER NOT NULL,
+           user_id INTEGER NOT NULL,
+           accpeted INTEGER NOT NULL,
+           job_done INTEGER NOT NULL,
+
+           FOREIGN KEY (job_id) REFERENCES jobs (id),
+           FOREIGN KEY (user_id)  REFERENCES user (id)
+        )
+    """
+
+    SEED_DATA = """
+        INSERT INTO offers (job_id, user_id, accpeted, job_done)
+        VALUES ("1","2","1","0" )
+
+    """
+
 
 
 
@@ -83,6 +106,7 @@ class JobTable:
 
 TABLES = [
     UserTable,
-    JobTable
+    JobTable,
+    OffersTable
 ]
 

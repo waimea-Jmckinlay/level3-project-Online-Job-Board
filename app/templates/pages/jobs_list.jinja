@@ -11,7 +11,15 @@
 
     <section id="jobs">
 
-        {% for jobs in jobs %}
+     {% for message in messages %}
+
+        <div class="jobs-item">
+           <header>
+               <h3>{{ jobs.title }}</h3>
+           </header>
+
+          <p class="jobs-body">{{ jobs.body }}</p>
+        
 
           
 

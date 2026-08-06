@@ -20,7 +20,6 @@ Develop a design for the database and a UI prototype that simulates the key func
     - User interactions and 'flow'
     - Page layouts / features
     - Colour palette
-    - Etc.
 
 
 ## Initial Database Design
