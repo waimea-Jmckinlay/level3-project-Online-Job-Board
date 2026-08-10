@@ -20,6 +20,54 @@ app = Flask(__name__)
 # App Routes Handlers
 #===========================================================
 
+# -----------------------------------------------------------
+# Signup page
+# -----------------------------------------------------------
+@app.get("/users/new")
+def show_signup_form():
+    return render_template("pages/sign_up.jinja")
+
+# -----------------------------------------------------------
+# Handle user signup
+# -----------------------------------------------------------
+@app.post("/users")
+def process_new_user():
+    username = request.form.get("username", "").strip()
+    real_name = request.form.get("real_name", "").strip()
+    password_hash = request.form.get("password", "").strip().lower()
+    contact_info= request.form.get("contact_info", "").strip()
+
+    with connect_db() as db:
+        sql = "SELECT id FROM users WHERE username=?"
+        params = (username,)
+        users = db.execute(sql, params).fetchone()
+
+        if users:
+            flash(f"username '{username}' already exists", "error")
+            return redirect("/users/new")
+
+        pass_hash = generate_password_hash(password_hash)
+
+        sql = """
+            INSERT INTO users (username, real_name, password_hash, contact_info)
+            VALUES (?, ?, ?, ?)
+        """
+        params = (username, real_name, pass_hash, contact_info)
+        db.execute(sql, params)
+
+        flash("Account created", "success")
+        return redirect("/homepage")
+
+# -----------------------------------------------------------
+# login page
+# -----------------------------------------------------------
+@app.get("/login")
+def show_login_form():
+    return render_template("pages/login.jinja")
+
+
+
+
 #-----------------------------------------------------------
 # Home page - Show all jobs
 #-----------------------------------------------------------

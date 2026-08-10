@@ -1,0 +1,41 @@
+{#=====================================================
+  Home page
+=====================================================#}
+
+{% extends 'pages/_base.jinja' %}
+
+
+{% block content %}
+
+
+
+  <h2>singup</h2>
+
+ <form method="post" action="/users">
+  <label>
+      Username
+      <input name="username" type="text" required>
+  </label>
+
+  <label>
+      your name
+      <input name="real_name" type="text" required>
+  </label>
+
+  <label>
+      Password
+      <input name="password" type="password" required>
+  </label>
+
+  <label>
+      phone number
+      <input name="contact_info" type="text" required>
+  </label>
+
+  <button>Sign Up</button>
+ </form>
+
+
+
+
+{% endblock %}
