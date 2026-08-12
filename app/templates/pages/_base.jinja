@@ -45,13 +45,12 @@
              
 
             {% if session.logged_in %}
-                <a href="/">Home</a>
                 <a href="/message/new">Post a Message</a>
                 <a href="/logout">Logout</a>
             {% else %}
                 <a href="/users/new">sign up page</a>
                 <a href="/login">login page</a>
-                <a href="/jobs_list.jinja"> jobs page</a>
+                <a href="/"> jobs page</a>
             {% endif %}
         </nav>
     </header>

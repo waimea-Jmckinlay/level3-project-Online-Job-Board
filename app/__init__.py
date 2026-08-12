@@ -19,6 +19,7 @@ app = Flask(__name__)
 #===========================================================
 # App Routes Handlers
 #===========================================================
+
 # -----------------------------------------------------------
 # Signup page
 # -----------------------------------------------------------
@@ -58,16 +59,21 @@ def process_new_user():
             INSERT INTO users (username, real_name, password_hash, contact_info)
             VALUES (?, ?, ?, ?)
         """
+
+
+
         params = (username, real_name, pass_hash, contact_info)
         db.execute(sql, params)
 
         session["logged_in"] = True
-        session["user"] = {
-            "id":       user["id"],
-            "username": user["username"],
-            "forename": user["forename"],
-            "surname":  user["surname"],
-            "admin": user["admin"]
+        session["users"] = {
+            "id":       users["id"],
+            "username": users["username"],
+            "real_name": users["real_name"],
+            "contact_info": users["contact_info"],
+            "password_hash":  users["password_hash"],
+            "admin": users["admin"],
+            "rating": users["rating"]
         }
         flash("Account created", "success")
         return redirect("/home")
@@ -79,7 +85,7 @@ def process_new_user():
 def show_login_form():
     return render_template("pages/login.jinja")
 
-#-----------------------------------------------------------------------
+#------------------------------------------------------------
 #login form
 #------------------------------------------------------------
 
@@ -91,28 +97,30 @@ def process_user_login():
 
     with connect_db() as db:
         sql = """
-            SELECT id, username, real_name,  contact_info, password_hash, admin , rating
+            SELECT id, username, real_name,  contact_info, password_hash, admin, rating
             FROM users 
-            WHERE username=?
+            WHERE username = ?
         """
         params = (username,)
-        user = db.execute(sql, params).fetchone()
+        users = db.execute(sql, params).fetchone()
 
-        if not user:
+        if not users:
             flash(f"Unknown user", "error")
             return redirect("/login")
 
-        if not check_password_hash(user["password_hash"], password):
+        if not check_password_hash(users["password_hash"], password):
             flash(f"Incorrect password", "error")
             return redirect("/login")
 
         session["logged_in"] = True
-        session["user"] = {
-            "id":       user["id"],
-            "username": user["username"],
-            "forename": user["forename"],
-            "surname":  user["surname"],
-            "admin": user["admin"]
+        session["users"] = {
+           "id":       users["id"],
+            "username": users["username"],
+            "real_name": users["real_name"],
+            "contact_info": users["contact_info"],
+            "password_hash":  users["password_hash"],
+            "admin": users["admin"],
+            "rating": users["rating"]
         }
 
         flash("Login successful", "success")

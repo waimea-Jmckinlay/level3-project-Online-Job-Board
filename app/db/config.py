@@ -25,7 +25,7 @@ class UserTable:
            username TEXT NOT NULL,
            real_name TEXT NOT NULL,
            password_hash TEXT NOT NULL,
-           contact_info TEXT,
+           contact_info TEXT NOT NULL,
            admin INTEGER,
            rating TEXT
         )
@@ -33,8 +33,8 @@ class UserTable:
 
     SEED_DATA = """
         INSERT INTO users (username, real_name, password_hash, contact_info, admin, rating )
-        VALUES            ("bob",  "sam", " scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", "do not recamend "),
-                          ("ham",  "damm", " scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", " will recamend ")
+        VALUES            ("bob",  "sam", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", "do not recamend "),
+                          ("ham",  "damm", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", " will recamend ")
                
 
     """
