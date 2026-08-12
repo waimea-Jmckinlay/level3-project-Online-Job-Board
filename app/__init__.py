@@ -19,6 +19,12 @@ app = Flask(__name__)
 #===========================================================
 # App Routes Handlers
 #===========================================================
+# -----------------------------------------------------------
+# Signup page
+# -----------------------------------------------------------
+@app.get("/home")
+def return_user():
+    return render_template("pages/homepage.jinja")
 
 # -----------------------------------------------------------
 # Signup page
@@ -55,8 +61,16 @@ def process_new_user():
         params = (username, real_name, pass_hash, contact_info)
         db.execute(sql, params)
 
+        session["logged_in"] = True
+        session["user"] = {
+            "id":       user["id"],
+            "username": user["username"],
+            "forename": user["forename"],
+            "surname":  user["surname"],
+            "admin": user["admin"]
+        }
         flash("Account created", "success")
-        return redirect("/homepage")
+        return redirect("/home")
 
 # -----------------------------------------------------------
 # login page
@@ -64,6 +78,47 @@ def process_new_user():
 @app.get("/login")
 def show_login_form():
     return render_template("pages/login.jinja")
+
+#-----------------------------------------------------------------------
+#login form
+#------------------------------------------------------------
+
+
+@app.post("/login")
+def process_user_login():
+    username = request.form.get("username", "").strip().lower()
+    password = request.form.get("password_hash", "").strip()
+
+    with connect_db() as db:
+        sql = """
+            SELECT id, username, real_name,  contact_info, password_hash, admin , rating
+            FROM users 
+            WHERE username=?
+        """
+        params = (username,)
+        user = db.execute(sql, params).fetchone()
+
+        if not user:
+            flash(f"Unknown user", "error")
+            return redirect("/login")
+
+        if not check_password_hash(user["password_hash"], password):
+            flash(f"Incorrect password", "error")
+            return redirect("/login")
+
+        session["logged_in"] = True
+        session["user"] = {
+            "id":       user["id"],
+            "username": user["username"],
+            "forename": user["forename"],
+            "surname":  user["surname"],
+            "admin": user["admin"]
+        }
+
+        flash("Login successful", "success")
+
+        return redirect("/home")
+
 
 
 

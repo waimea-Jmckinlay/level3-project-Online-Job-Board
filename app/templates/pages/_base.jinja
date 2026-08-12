@@ -30,14 +30,38 @@
         </a>
 
         <nav>
-            <a href="/users/new">sign up page</a>
-            <a href="/login.jinja">login page</a>
-            <a href="/jobs_list.jinja"> jobs page</a>
+
+
+     <span class="greeting">
+        {% if session.logged_in %}
+          Welcome, <strong>{{ session.users.username }}</strong>!
+        {% else %}
+           Welcome, guest!
+        {% endif %}
+     </span>
+
+        
+             
+             
+
+            {% if session.logged_in %}
+                <a href="/">Home</a>
+                <a href="/message/new">Post a Message</a>
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/users/new">sign up page</a>
+                <a href="/login">login page</a>
+                <a href="/jobs_list.jinja"> jobs page</a>
+            {% endif %}
         </nav>
     </header>
 
+
     {# Show flash messages from any previous events #}
     {% include "partials/messages.jinja" %}
+
+
+    
 
     <main>
 
