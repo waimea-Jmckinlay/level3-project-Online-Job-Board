@@ -60,22 +60,22 @@ def process_new_user():
             VALUES (?, ?, ?, ?)
         """
 
-
-
         params = (username, real_name, pass_hash, contact_info)
-        db.execute(sql, params)
+        result = db.execute(sql, params)
+
+        flash("Account created", "success")
+        
+        # Get the ID of the new username
+        new_id = result.lastrowid
 
         session["logged_in"] = True
         session["users"] = {
-            "id":       users["id"],
-            "username": users["username"],
-            "real_name": users["real_name"],
-            "contact_info": users["contact_info"],
-            "password_hash":  users["password_hash"],
-            "admin": users["admin"],
-            "rating": users["rating"]
+            "id": new_id,
+            "username": username,
+            "real_name": real_name,
+            "contact_info": contact_info
         }
-        flash("Account created", "success")
+        
         return redirect("/home")
 
 # -----------------------------------------------------------
@@ -93,11 +93,11 @@ def show_login_form():
 @app.post("/login")
 def process_user_login():
     username = request.form.get("username", "").strip().lower()
-    password = request.form.get("password_hash", "").strip()
+    password = request.form.get("password", "").strip()
 
     with connect_db() as db:
         sql = """
-            SELECT id, username, real_name,  contact_info, password_hash, admin, rating
+            SELECT id, username, real_name,  contact_info, password_hash
             FROM users 
             WHERE username = ?
         """
@@ -119,16 +119,21 @@ def process_user_login():
             "real_name": users["real_name"],
             "contact_info": users["contact_info"],
             "password_hash":  users["password_hash"],
-            "admin": users["admin"],
-            "rating": users["rating"]
+            # "admin": users["admin"],
+            # "rating": users["rating"]
         }
 
         flash("Login successful", "success")
 
         return redirect("/home")
-
-
-
+#---------------------------------------------------------------
+# logout 
+#---------------------------------------------------------------    
+@app.get("/logout")
+def logout_user():
+    session.clear()
+    flash(f"You have been logged out", "success")
+    return redirect("/")
 
 
 #-----------------------------------------------------------
