@@ -1,0 +1,63 @@
+{#=====================================================
+  Home page
+=====================================================#}
+
+{% extends 'pages/_base.jinja' %}
+
+
+{% block content %}
+
+    <h2>jobs</h2>
+
+    <section id="jobs">
+
+        {% for job in jobs %}
+
+            <div class="offers-accapted">
+                <header>
+                    <h3>{{ job.title }}</h3>
+                </header>
+
+                <p class="jobs-notes">{{ job.notes }}</p>
+
+                <footer>
+                    <p class="author">Posted by <strong>{{ job.title }} {{ job.notes }}</strong> ({{ job.title }})</p>
+
+                    {% if session.logged_in %}
+                        <p><a class="button" href="/job/{{ job.id }}/accept">accept</a></p>
+                    {% endif %}
+
+
+
+                    {% if session.logged_in and (job.user_id == session.user.id or session.user == admin) %}
+
+                        <a
+                            class="button"
+                            title="Edit message"
+                            href="/job/{{ job.id }}/edit"
+                        >
+                            edit
+                        </a>
+
+                        <a
+                            class="button"
+                            title="Delete job"
+                            onclick="return confirm('Really delete?')"
+                            href="/job/{{ job.id }}/delete"
+                        >
+                            delete
+                        </a>
+
+                    {% endif %}
+                </footer>
+            </div>
+
+        {% else %}
+
+            <p>No Messages!</p>
+
+        {% endfor %}
+
+    </section>
+
+{% endblock %}

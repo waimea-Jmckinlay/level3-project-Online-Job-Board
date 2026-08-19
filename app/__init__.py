@@ -21,11 +21,40 @@ app = Flask(__name__)
 #===========================================================
 
 # -----------------------------------------------------------
-# Signup page
+# once signed up 
 # -----------------------------------------------------------
 @app.get("/home")
-def return_user():
-    return render_template("pages/homepage.jinja")
+@login_required
+def return_user():  
+    with connect_db() as db:
+        sql = """
+            SELECT id, title, notes, due_by_date, address, user_id
+            FROM jobs 
+            WHERE user_id = id
+        """
+        params = ()
+        jobs = db.execute(sql, params).fetchall()
+
+
+        return render_template("pages/homepage.jinja", jobs=jobs)
+
+# -----------------------------------------------------------
+# seach page
+# -----------------------------------------------------------
+@app.get("/find_job")
+@login_required
+def find_job():  
+    with connect_db() as db:
+        sql = """
+            SELECT id, title, notes, due_by_date, address, user_id
+            FROM jobs
+        """
+        params = ()
+        jobs = db.execute(sql, params).fetchall()
+
+
+        return render_template("pages/search_page.jinja", jobs=jobs)
+
 
 # -----------------------------------------------------------
 # Signup page
@@ -113,12 +142,11 @@ def process_user_login():
             return redirect("/login")
 
         session["logged_in"] = True
-        session["users"] = {
+        session["user"] = {
            "id":       users["id"],
             "username": users["username"],
             "real_name": users["real_name"],
             "contact_info": users["contact_info"],
-            "password_hash":  users["password_hash"],
             # "admin": users["admin"],
             # "rating": users["rating"]
         }
@@ -130,6 +158,7 @@ def process_user_login():
 # logout 
 #---------------------------------------------------------------    
 @app.get("/logout")
+@login_required
 def logout_user():
     session.clear()
     flash(f"You have been logged out", "success")
@@ -156,6 +185,54 @@ def show_jobs():
         flash("Test ERROR message", "error")
 
         return render_template("pages/jobs_list.jinja", jobs=jobs)
+#----------------------------------------------------------------------------
+#job-delete
+#----------------------------------------------------------------------------------
+@app.get(f"/job/<int:id>/delete")
+@login_required
+def process_delete_job(id):
+    with connect_db() as db:
+        sql = """
+            SELECT user_id FROM jobs WHERE id=?
+        """
+        params = (id,)
+        jobs = db.execute(sql, params).fetchone()
+        users = db.execute(sql, params).fetchone()
+
+        if jobs and users ["user_id"] == session["user"]["id"]:
+
+            sql = """
+                DELETE FROM jobs WHERE id=?
+            """
+            params = (id,)
+            db.execute(sql, params)
+
+            flash("job deleted", "success")
+            return redirect("/find_job")
+
+        flash("Invalid job", "error")
+        return redirect("/find_job")
+#--------------------------------------------------------------
+#accapted jobs funchtion 
+#--------------------------------------------------------------
+@app.get("/job/<int:id>/accept")
+@login_required
+def process_accept_job(id):  
+    with connect_db() as db:
+        sql = """
+            SELECT job_id, user_id
+            FROM offers 
+            WHERE job_id=? AND user_id=?
+        """
+        user_id = session["user"]["id"]
+        params = (id, user_id)
+        offers = db.execute(sql , params).fetchone()
+
+
+
+    
+    return redirect ("/find_job") 
+
 
 
 #===========================================================

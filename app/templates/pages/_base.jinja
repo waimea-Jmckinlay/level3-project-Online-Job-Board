@@ -34,18 +34,20 @@
 
      <span class="greeting">
         {% if session.logged_in %}
-          Welcome, <strong>{{ session.users.username }}</strong>!
+          Welcome, <strong>{{ session.user.username }}</strong>!
         {% else %}
            Welcome, guest!
         {% endif %}
      </span>
 
         
-             
+                
              
 
             {% if session.logged_in %}
+                <a href="/home"> home page</a>
                 <a href="/message/new">Post a Message</a>
+                <a href="/find_job">find jobs</a>
                 <a href="/logout">Logout</a>
             {% else %}
                 <a href="/users/new">sign up page</a>
