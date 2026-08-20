@@ -72,6 +72,7 @@ def process_new_user():
     real_name = request.form.get("real_name", "").strip()
     password_hash = request.form.get("password", "").strip().lower()
     contact_info= request.form.get("contact_info", "").strip()
+    admin = request.form.get("admin","")
 
     with connect_db() as db:
         sql = "SELECT id FROM users WHERE username=?"
@@ -85,11 +86,11 @@ def process_new_user():
         pass_hash = generate_password_hash(password_hash)
 
         sql = """
-            INSERT INTO users (username, real_name, password_hash, contact_info)
-            VALUES (?, ?, ?, ?)
-        """
+            INSERT INTO users (username, real_name, password_hash, contact_info, admin)
+            VALUES (?, ?, ?, ?, ?)
+        """ 
 
-        params = (username, real_name, pass_hash, contact_info)
+        params = (username, real_name, pass_hash, contact_info, admin)
         result = db.execute(sql, params)
 
         flash("Account created", "success")
@@ -102,7 +103,8 @@ def process_new_user():
             "id": new_id,
             "username": username,
             "real_name": real_name,
-            "contact_info": contact_info
+            "contact_info": contact_info,
+            "admin": admin
         }
         
         return redirect("/home")
@@ -126,7 +128,7 @@ def process_user_login():
 
     with connect_db() as db:
         sql = """
-            SELECT id, username, real_name,  contact_info, password_hash
+            SELECT id, username, real_name,  contact_info, password_hash, admin
             FROM users 
             WHERE username = ?
         """
@@ -147,7 +149,7 @@ def process_user_login():
             "username": users["username"],
             "real_name": users["real_name"],
             "contact_info": users["contact_info"],
-            # "admin": users["admin"],
+            "admin": users["admin"],
             # "rating": users["rating"]
         }
 
