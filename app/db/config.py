@@ -26,7 +26,7 @@ class UserTable:
            real_name TEXT NOT NULL,
            password_hash TEXT NOT NULL,
            contact_info TEXT NOT NULL,
-           admin INTEGER,
+           admin INTEGER DEFAULT 0,
            rating TEXT
         )
     """
