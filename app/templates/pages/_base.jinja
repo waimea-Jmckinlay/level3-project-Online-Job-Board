@@ -31,28 +31,23 @@
 
         <nav>
 
-
-     <span class="greeting">
-        {% if session.logged_in %}
-          Welcome, <strong>{{ session.user.username }}</strong>!
-        {% else %}
-           Welcome, guest!
-        {% endif %}
-     </span>
-
-        
-                
-             
+            <span class="greeting">
+                {% if session.logged_in %}
+                Welcome, <strong>{{ session.user.username }}</strong>!
+                {% else %}
+                Welcome, guest!
+                {% endif %}
+            </span>
 
             {% if session.logged_in %}
-                <a href="/home"> home page</a>
-                <a href="/message/new">Post a Message</a>
-                <a href="/find_job">find jobs</a>
+                <a href="/">Home</a>
+                <a href="/job/new">Post a Message</a>
+                <a href="/find_job">Find Jobs</a>
                 <a href="/logout">Logout</a>
             {% else %}
-                <a href="/users/new">sign up page</a>
-                <a href="/login">login page</a>
-                <a href="/"> jobs page</a>
+                <a href="/">Home</a>
+                <a href="/user/new">Sign Up</a>
+                <a href="/login">Login</a>
             {% endif %}
         </nav>
     </header>

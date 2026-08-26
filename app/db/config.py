@@ -58,7 +58,12 @@ class JobTable:
 
     SEED_DATA = """
         INSERT INTO jobs (title, notes, due_by_date, address, user_id)
-        VALUES ("Welcome!", "repear my roof" , "5/7/2029", "5th YUMMY", "1")
+        VALUES 
+            ("Leaking roof!", "please repear my roof" , "2026-08-13", "5 Main Street", 1),
+            ("Broken tiles",  "I need my bathroom tiles fixing" , "2026-10-13", "123 Big Road", 2),
+            ("Clean dishes", "Wash all my dirty dishes, please" , "2026-08-11", "123 Big Road", 2),
+            ("Broken fence", "My fence has a broken post" , "2026-10-23", "5 Main Street", 1),
+            ("Sheep have escaped", "please find my sheep" , "2026-08-10", "5 Main Street", 1)
 
 
     """
@@ -82,7 +87,9 @@ class OffersTable:
 
     SEED_DATA = """
         INSERT INTO offers (jobs_id, users_id, accpeted, job_done)
-        VALUES ("1","2","1","0" )
+        VALUES 
+            ("1","2","1","0" )
+            ("2","1","0","0" )
 
     """
 

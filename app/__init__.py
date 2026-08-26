@@ -21,22 +21,89 @@ app = Flask(__name__)
 #===========================================================
 
 # -----------------------------------------------------------
-# once signed up 
+# home page
 # -----------------------------------------------------------
-@app.get("/home")
-@login_required
+@app.get("/")
 def return_user():  
     with connect_db() as db:
-        sql = """
-            SELECT id, title, notes, due_by_date, address, user_id
-            FROM jobs 
-            WHERE user_id = id
-        """
-        params = ()
-        jobs = db.execute(sql, params).fetchall()
+        # Assume user not logged in
+        user_id = None
+        jobs = None
+        
+        # Try to get user info
+        user_info = session.get("user")
+        if user_info != None:
+            user_id = session.get("user").get("id")
 
+        # If successful, get the user's jobs
+        if user_id != None:
+            sql = """
+                SELECT id, title, notes, due_by_date, address, user_id
+                FROM jobs 
+                WHERE user_id = ?
+            """
+            params = (user_id,)
+            jobs = db.execute(sql, params).fetchall()
+
+        else:
+            sql = """
+                SELECT id, title, notes, due_by_date, address, user_id
+                FROM jobs
+            """
+            params = ()
+            jobs = db.execute(sql, params).fetchall()
 
         return render_template("pages/homepage.jinja", jobs=jobs)
+    
+#---------------------------------------------------------------
+#make job page
+#---------------------------------------------------------------
+@app.get("/job/new")
+def show_job_form():
+    return render_template("pages/make_job_page.jinja")
+
+#------------------------------------------------------------
+# handle make job page
+#------------------------------------------------------------
+@app.post("/job")
+@login_required
+def process_new_job():
+    
+    title = request.form.get("title", "").strip()
+    notes = request.form.get("notes", "").strip()
+    due_by_date = request.form.get("due_by_date", "").strip().lower()
+    address= request.form.get("address", "").strip()
+
+
+    with connect_db() as db:
+        sql = "SELECT id FROM jobs WHERE title=?"
+        params = (title, notes, due_by_date, address,)
+        
+
+         # Assume user not logged in
+        user_id = None
+
+          # Try to get user info
+        user_info = session.get("user")
+        if user_info != None:
+         user_id = session.get("user").get("id")
+
+        if user_id != None:
+        
+            sql = """
+                INSERT INTO jobs (title, notes, due_by_date, address, user_id)
+                VALUES (?, ?, ?, ?, ? )
+            """ 
+        else:
+            flash("user not login")
+            return redirect ( "/job/new" )
+    
+        
+
+   
+        flash("Job created", "success")    
+        return redirect("/")
+
 
 # -----------------------------------------------------------
 # seach page
@@ -59,37 +126,38 @@ def find_job():
 # -----------------------------------------------------------
 # Signup page
 # -----------------------------------------------------------
-@app.get("/users/new")
+@app.get("/user/new")
 def show_signup_form():
     return render_template("pages/sign_up.jinja")
 
 # -----------------------------------------------------------
 # Handle user signup
 # -----------------------------------------------------------
-@app.post("/users")
+@app.post("/user")
 def process_new_user():
     username = request.form.get("username", "").strip()
     real_name = request.form.get("real_name", "").strip()
     password_hash = request.form.get("password", "").strip().lower()
     contact_info= request.form.get("contact_info", "").strip()
+    admin = "0"
 
     with connect_db() as db:
         sql = "SELECT id FROM users WHERE username=?"
         params = (username,)
-        users = db.execute(sql, params).fetchone()
+        user = db.execute(sql, params).fetchone()
 
-        if users:
+        if user:
             flash(f"username '{username}' already exists", "error")
-            return redirect("/users/new")
+            return redirect("/user/new")
 
         pass_hash = generate_password_hash(password_hash)
 
         sql = """
-            INSERT INTO users (username, real_name, password_hash, contact_info)
-            VALUES (?, ?, ?, ?)
+            INSERT INTO users (username, real_name, password_hash, contact_info, admin)
+            VALUES (?, ?, ?, ?, ?)
         """ 
 
-        params = (username, real_name, pass_hash, contact_info)
+        params = (username, real_name, pass_hash, contact_info, admin)
         result = db.execute(sql, params)
 
         flash("Account created", "success")
@@ -98,14 +166,15 @@ def process_new_user():
         new_id = result.lastrowid
 
         session["logged_in"] = True
-        session["users"] = {
+        session["user"] = {
             "id": new_id,
             "username": username,
             "real_name": real_name,
             "contact_info": contact_info,
+            "admin": admin,
         }
         
-        return redirect("/home")
+        return redirect("/")
 
 # -----------------------------------------------------------
 # login page
@@ -131,29 +200,29 @@ def process_user_login():
             WHERE username = ?
         """
         params = (username,)
-        users = db.execute(sql, params).fetchone()
+        user = db.execute(sql, params).fetchone()
 
-        if not users:
+        if not user:
             flash(f"Unknown user", "error")
             return redirect("/login")
 
-        if not check_password_hash(users["password_hash"], password):
+        if not check_password_hash(user["password_hash"], password):
             flash(f"Incorrect password", "error")
             return redirect("/login")
 
         session["logged_in"] = True
         session["user"] = {
-           "id":       users["id"],
-            "username": users["username"],
-            "real_name": users["real_name"],
-            "contact_info": users["contact_info"],
-            "admin": users["admin"],
+           "id":       user["id"],
+            "username": user["username"],
+            "real_name": user["real_name"],
+            "contact_info": user["contact_info"],
+            "admin": user["admin"],
 
         }
 
         flash("Login successful", "success")
 
-        return redirect("/home")
+        return redirect("/")
 #---------------------------------------------------------------
 # logout 
 #---------------------------------------------------------------    
@@ -165,26 +234,6 @@ def logout_user():
     return redirect("/")
 
 
-#-----------------------------------------------------------
-# Home page - Show all jobs
-#-----------------------------------------------------------
-@app.get("/")
-def show_jobs():
-    with connect_db() as db:
-        sql = """
-            SELECT id, title, notes, due_by_date, address, user_id
-            FROM jobs
-        """
-        params = ()
-        jobs = db.execute(sql, params).fetchall()
-
-        flash("Test message")
-        flash("Test SUCCESS message", "success")
-        flash("Test INFO message", "info")
-        flash("Test WARNING message", "warning")
-        flash("Test ERROR message", "error")
-
-        return render_template("pages/jobs_list.jinja", jobs=jobs)
 #----------------------------------------------------------------------------
 #job-delete
 #----------------------------------------------------------------------------------

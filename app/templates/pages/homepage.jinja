@@ -7,21 +7,27 @@
 
 {% block content %}
 
-    <h2>jobs</h2>
+    {% if session.logged_in %}
+      <h2> jobs you posted </h2>
+    {% else %}
+      <h2>All Jobs</h2>
+    {% endif %}
 
     <section id="jobs-list">
 
-     {% for jobs in jobs %}
+      {% for job in jobs %}
 
-        <div class="jobs-item">
-           <header>
-               <h3>{{ jobs.title, jobs.notes, jobs.address, jobs.due_by_date }}</h3>
-           </header>
+          <div class="jobs-item">
+            <header>
+                <h3>{{ job.title }}</h3>
+            </header>
 
-          <p class="jobs-body">{{ jobs.body }}</p>
-        
-
+            <p>{{ job.notes }}</p>
+            <p>{{ job.address }}</p>
+            <p>{{ job.due_by_date }}</p>
           
+          </div>
+            
 
         {% endfor %}
 
