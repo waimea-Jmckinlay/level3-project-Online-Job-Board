@@ -72,38 +72,29 @@ def process_new_job():
     title = request.form.get("title", "").strip()
     notes = request.form.get("notes", "").strip()
     due_by_date = request.form.get("due_by_date", "").strip().lower()
-    address= request.form.get("address", "").strip()
-
+    address = request.form.get("address", "").strip()
+    user_id = session["user"]["id"]
 
     with connect_db() as db:
-        sql = "SELECT id FROM jobs WHERE title=?"
-        params = (title, notes, due_by_date, address,)
-        
 
-         # Assume user not logged in
-        user_id = None
-
-          # Try to get user info
-        user_info = session.get("user")
-        if user_info != None:
-         user_id = session.get("user").get("id")
-
-        if user_id != None:
-        
             sql = """
                 INSERT INTO jobs (title, notes, due_by_date, address, user_id)
-                VALUES (?, ?, ?, ?, ? )
-            """ 
-        else:
-            flash("user not login")
-            return redirect ( "/job/new" )
-    
-        
+                VALUES (?, ?, ?, ?, ?)
+                 """ 
+            params = (title, notes, due_by_date, address, user_id,)
+            jobs = db.execute(sql, params).fetchall()
 
-   
-        flash("Job created", "success")    
-        return redirect("/")
+            flash("Job created", "success")   
+            
+            sql = """
+                SELECT id, title, notes, due_by_date, address, user_id
+                FROM jobs 
+                WHERE user_id = ?
+            """
+            params = (user_id,)
+            jobs = db.execute(sql, params).fetchall()
 
+    return render_template("pages/homepage.jinja", jobs=jobs)
 
 # -----------------------------------------------------------
 # seach page
