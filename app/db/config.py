@@ -77,8 +77,8 @@ class OffersTable:
             id      INTEGER PRIMARY KEY AUTOINCREMENT,
            jobs_id INTEGER NOT NULL,
            users_id INTEGER NOT NULL,
-           accpeted INTEGER NOT NULL,
-           job_done INTEGER NOT NULL,
+           accpeted INTEGER,
+           job_done INTEGER,
 
            FOREIGN KEY (jobs_id) REFERENCES jobs (id),
            FOREIGN KEY (users_id)  REFERENCES user (id)

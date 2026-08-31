@@ -260,18 +260,18 @@ def process_delete_job(id):
 def process_accept_job(id):  
     with connect_db() as db:
         sql = """
-            SELECT job_id, user_id
-            FROM offers 
-            WHERE job_id=? AND user_id=?
+            INSERT INTO offers(jobs_id, users_id)
+            VALUES (?, ?)
         """
         user_id = session["user"]["id"]
-        params = (id, user_id)
+        job_id = "<int:id>"
+        params = (job_id, user_id)
         offers = db.execute(sql , params).fetchone()
 
 
 
     
-    return redirect ("/find_job") 
+    return redirect ("/find_job", offers=offers) 
 
 
 
