@@ -24,7 +24,7 @@
                     <p class="author">Posted by <strong>{{ job.title }} {{ job.notes }}</strong> ({{ job.title }})</p>
 
                     {% if session.logged_in %}
-                        <p><a class="button" href="/job/{{ job.id }}/accept">accept</a></p>
+                        <p><a class="button" href="/job/{{ job.id }}/accept">apply</a></p>
                     {% endif %}
 
 
@@ -54,7 +54,7 @@
 
         {% else %}
 
-            <p>No Messages!</p>
+            <p>No jobs!</p>
 
         {% endfor %}
 

@@ -45,15 +45,27 @@ def return_user():
             params = (user_id,)
             jobs = db.execute(sql, params).fetchall()
 
+            sql = """
+                SELECT id, jobs_id, users_id, accpeted, job_done
+                FROM offers 
+                WHERE users_id = ?
+                RIGHT JOIN jobs
+                ON offers.jobs_id = jobs.id
+            """
+            params = (user_id,)
+            offers = db.execute(sql, params).fetchall()
+
+
         else:
             sql = """
                 SELECT id, title, notes, due_by_date, address, user_id
                 FROM jobs
+               
             """
             params = ()
             jobs = db.execute(sql, params).fetchall()
 
-        return render_template("pages/homepage.jinja", jobs=jobs)
+        return render_template("pages/homepage.jinja", jobs=jobs, offers=offers)
     
 #---------------------------------------------------------------
 #make job page
@@ -103,9 +115,16 @@ def process_new_job():
 @login_required
 def find_job():  
     with connect_db() as db:
-        sql = """
+
+        user_info = session.get("user")
+        if user_info != None:
+            user_id = session.get("user").get("id")
+         
+        if user_id != None:
+            sql = """
             SELECT id, title, notes, due_by_date, address, user_id
             FROM jobs
+
         """
         params = ()
         jobs = db.execute(sql, params).fetchall()
@@ -257,21 +276,23 @@ def process_delete_job(id):
 #--------------------------------------------------------------
 @app.get("/job/<int:id>/accept")
 @login_required
-def process_accept_job(id):  
+def process_accept_job(id):
     with connect_db() as db:
+
+        
         sql = """
             INSERT INTO offers(jobs_id, users_id)
             VALUES (?, ?)
         """
-        user_id = session["user"]["id"]
-        job_id = "<int:id>"
-        params = (job_id, user_id)
-        offers = db.execute(sql , params).fetchone()
+        users_id = session["user"]["id"]
+        job_id = id
+        params = (job_id, users_id)
+        db.execute(sql , params)
 
 
 
-    
-    return redirect ("/find_job", offers=offers) 
+        flash("job deleted", "success")    
+    return redirect ("/find_job",) 
 
 
 

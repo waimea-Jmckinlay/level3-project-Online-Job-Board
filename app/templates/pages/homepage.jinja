@@ -27,7 +27,19 @@
             <p>{{ job.due_by_date }}</p>
           
           </div>
+          {% endfor %}
             
+            {% for offers in offers %}
+
+          <div class="jobs-item">
+            <header>
+                <h3>{{ offers.job }}</h3>
+            </header>
+
+            <p>{{ offers.jobs_id }}</p>
+          
+          </div>
+           
 
         {% endfor %}
 
