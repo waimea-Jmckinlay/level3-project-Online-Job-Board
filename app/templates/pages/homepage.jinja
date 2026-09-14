@@ -1,14 +1,12 @@
 {#=====================================================
   Home page
 =====================================================#}
-
 {% extends 'pages/_base.jinja' %}
-
 
 {% block content %}
 
     {% if session.logged_in %}
-      <h2> jobs you posted </h2>
+      <h2>Jobs you posted</h2>
     {% else %}
       <h2>All Jobs</h2>
     {% endif %}
@@ -16,7 +14,6 @@
     <section id="jobs-list">
 
       {% for job in jobs %}
-
           <div class="jobs-item">
             <header>
                 <h3>{{ job.title }}</h3>
@@ -25,23 +22,23 @@
             <p>{{ job.notes }}</p>
             <p>{{ job.address }}</p>
             <p>{{ job.due_by_date }}</p>
-          
           </div>
-          {% endfor %}
-            
-            {% for offers in offers %}
+      {% endfor %} 
+        
+      {% if session.logged_in %}
+        <h2>Offers</h2>
+        
 
-          <div class="jobs-item">
+        {% for offer in offers %} 
+          <div class="offers-items">
             <header>
-                <h3>{{ offers.job }}</h3>
-            </header>
+                <h3>{{ offer.jobs }}</h3>
+           </header>
 
-            <p>{{ offers.jobs_id }}</p>
-          
+            <p>{{ offer.jobs_id }}</p>
           </div>
-           
-
         {% endfor %}
+      {% endif %}
 
     </section>
 

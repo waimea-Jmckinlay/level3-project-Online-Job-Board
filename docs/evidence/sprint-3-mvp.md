@@ -10,7 +10,7 @@ Continue to develop the web application to the point that it provides all key fu
 **Edit these goals as needed**
 
 - Create the following web pages:
-    - Form for ...
+    - Form for wsinging up and login & creating and applying for jobs & 
     - Etc.
 - Develop SQL database queries to:
     - Add a new ...

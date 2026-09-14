@@ -29,6 +29,7 @@ def return_user():
         # Assume user not logged in
         user_id = None
         jobs = None
+        offers = None
         
         # Try to get user info
         user_info = session.get("user")
@@ -46,11 +47,10 @@ def return_user():
             jobs = db.execute(sql, params).fetchall()
 
             sql = """
-                SELECT id, jobs_id, users_id, accpeted, job_done
+                SELECT offers.id, offers.jobs_id, offers.users_id, offers.accpeted, jobs.id
                 FROM offers 
-                WHERE users_id = ?
-                RIGHT JOIN jobs
-                ON offers.jobs_id = jobs.id
+                WHERE offers.users_id = ?
+                RIGHT JOIN jobs ON offers.jobs_id = jobs.id
             """
             params = (user_id,)
             offers = db.execute(sql, params).fetchall()
@@ -65,7 +65,7 @@ def return_user():
             params = ()
             jobs = db.execute(sql, params).fetchall()
 
-        return render_template("pages/homepage.jinja", jobs=jobs, offers=offers)
+        return render_template("pages/homepage.jinja", jobs=jobs, offers = offers )
     
 #---------------------------------------------------------------
 #make job page

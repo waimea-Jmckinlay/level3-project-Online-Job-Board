@@ -34,17 +34,27 @@ the db is working but I wasn't able to put it onto the first page yet
 ![Alt text](screenshots/second_try.png)
 at lest the page is working but still no jobs are showing
 ### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
+I have the4 first db working on the first page when login or not 
+we also have some test data t show this as both the jobs and users table are working 
 
 **PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![Alt text](image.png)
+![Alt text](image2.png)
 
+## the offers table
 
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+so here wee are testing if i can get the offers table to work and to show the jobs that the user has offered to do 
 
 **PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+
+<video src="20260913-2349-40.5372822.mp4" controls title="Title"></video>
+
+as we can see it dind't go very well 
+
+### Changes / Improvements
+ok take 2 done a bounch of changes
+
+**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
 
 ### Changes / Improvements
 
