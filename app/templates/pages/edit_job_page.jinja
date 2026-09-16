@@ -1,0 +1,45 @@
+{#-----------------------------------------------------
+edit job page 
+------------------------------------------------------#}
+{% extends 'pages/_base.jinja' %}
+
+
+
+
+
+{% block content %}
+
+    <h2>Edit job</h2>
+
+    <form method="post" action="/job/{{ job.id }}/update">
+
+    <label>
+      title
+      <input name="title" type="text" required>
+    </label>
+
+    <label>
+      notes
+      <input name="notes" type="text" required>
+    </label>
+
+    <label>
+      due_by_date
+      <input name="due_by_date" type="date" required>
+    </label>
+
+    <label>
+      address
+      <input name="address" type="text" required>
+    </label>
+
+
+        <button>Update job</button>
+    </form>
+
+{% endblock %}
+
+
+
+
+

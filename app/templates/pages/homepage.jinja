@@ -23,6 +23,20 @@
             <p>{{ job.address }}</p>
             <p>{{ job.due_by_date }}</p>
           </div>
+            <a
+          class="button"
+          title="Edit message"
+          href= "/job/{{ job['id'] }}/edit"> Edit </a>
+
+          <a
+          class="button"
+          title="Delete job"
+          onclick="return confirm('Really delete?')"
+          href="/job/{{ job.id }}/delete"
+                        >
+                            delete
+            
+
       {% endfor %} 
         
       {% if session.logged_in %}
@@ -34,9 +48,14 @@
             <header>
                 <h3>{{ offer.jobs }}</h3>
            </header>
-
-            <p>{{ offer.jobs_id }}</p>
+            <p>{{ offer.notes }}</p>
+            <p>{{ offer.address }}</p>
+            <p>{{ offer.due_by_date }}</p>
+           
           </div>
+
+
+          
         {% endfor %}
       {% endif %}
 
