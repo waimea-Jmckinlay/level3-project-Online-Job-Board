@@ -23,21 +23,24 @@
             <p>{{ job.address }}</p>
             <p>{{ job.due_by_date }}</p>
           </div>
-            <a
+
+          {% if session.logged_in %}
+
+          <a
           class="button"
           title="Edit message"
-          href= "/job/{{ job['id'] }}/edit"> Edit </a>
+          href= "/job/{{job.id}}/edit">Edit</a>
 
           <a
           class="button"
           title="Delete job"
           onclick="return confirm('Really delete?')"
-          href="/job/{{ job.id }}/delete"
-                        >
-                            delete
-            
+          href="/job/{{job.id}}/delete"
+                        >delete</a>
+          {% endif %}
 
-      {% endfor %} 
+
+       {% endfor %} 
         
       {% if session.logged_in %}
         <h2>Offers</h2>
@@ -46,13 +49,21 @@
         {% for offer in offers %} 
           <div class="offers-items">
             <header>
-                <h3>{{ offer.jobs }}</h3>
            </header>
-            <p>{{ offer.notes }}</p>
-            <p>{{ offer.address }}</p>
-            <p>{{ offer.due_by_date }}</p>
+            <p>{{ offer.accepted }}</p>
            
           </div>
+            <a
+          class="button"
+          title="Edit message"
+          href= "/job/{{offer.id}}/edit">Edit </a>
+
+          <a
+          class="button"
+          title="Delete job"
+          onclick="return confirm('Really delete?')"
+          href="/job/{{offer.id}}/delete"
+                        >delete</a>
 
 
           

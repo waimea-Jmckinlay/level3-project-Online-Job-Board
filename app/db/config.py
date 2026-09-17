@@ -74,21 +74,21 @@ class OffersTable:
 
     SCHEMA = """
         CREATE TABLE offers (
-            id      INTEGER PRIMARY KEY AUTOINCREMENT,
-           jobs_id INTEGER NOT NULL,
-           users_id INTEGER NOT NULL,
-           accpeted INTEGER,
+           id      INTEGER PRIMARY KEY AUTOINCREMENT,
+           job_id INTEGER NOT NULL,
+           user_id INTEGER NOT NULL,
+           accepted INTEGER,
            job_done INTEGER,
 
-           FOREIGN KEY (jobs_id) REFERENCES jobs (id),
-           FOREIGN KEY (users_id)  REFERENCES user (id)
+           FOREIGN KEY (job_id) REFERENCES jobs (id),
+           FOREIGN KEY (user_id) REFERENCES users (id)
         )
     """
 
     SEED_DATA = """
-        INSERT INTO offers (jobs_id, users_id, accpeted, job_done)
+        INSERT INTO offers (job_id, user_id, accepted, job_done)
         VALUES 
-            ("1","2","1","0" )
+            ("1","2","1","0" ),
             ("2","1","0","0" )
 
     """

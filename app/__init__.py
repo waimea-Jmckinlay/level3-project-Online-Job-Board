@@ -47,19 +47,16 @@ def return_user():
             jobs = db.execute(sql, params).fetchall()
 
             sql = """
-            SELECT 
-                jobs.id AS job_id, 
-                jobs.title, 
-                jobs.notes, 
-                jobs.due_by_date,
-                offers.id AS offer_id, 
-                offers.accpeted
-            FROM offers 
-            INNER JOIN jobs ON offers.jobs_id = jobs.id
-            WHERE offers.users_id = ?
-        """
-            params = (user_id,)
+            SELECT * FROM offers
+            """
+            params = ()
             offers = db.execute(sql, params).fetchall()
+
+            sql = """
+            SELECT * FROM users
+            """
+            params = ()
+            users = db.execute(sql, params).fetchall()
 
 
         else:
@@ -71,7 +68,7 @@ def return_user():
             params = ()
             jobs = db.execute(sql, params).fetchall()
 
-        return render_template("pages/homepage.jinja", jobs=jobs, offers = offers )
+        return render_template("pages/homepage.jinja", jobs=jobs, offers=offers, users=users )
 #---------------------------------------------------------------
 #make job page
 #---------------------------------------------------------------
@@ -252,31 +249,37 @@ def logout_user():
 #----------------------------------------------------------------------------
 #job-delete
 #----------------------------------------------------------------------------------
-@app.get(f"/job/<int:id>/delete")
+@app.get("/job/<int:id>/delete") 
 @login_required
 def process_delete_job(id):
     with connect_db() as db:
-        sql = """
-            SELECT user_id FROM jobs WHERE id=?
-        """
+        # --- CHECK AND DELETE FROM JOBS ---
+        sql = "SELECT user_id FROM jobs WHERE id=?"
         params = (id,)
-        jobs = db.execute(sql, params).fetchone()
-        users = db.execute(sql, params).fetchone()
+        job = db.execute(sql, params).fetchone()
 
-        if jobs and users ["user_id"] == session["user"]["id"]:
-
-            sql = """
-                DELETE FROM jobs WHERE id=?
-            """
-            params = (id,)
-            db.execute(sql, params)
-
-            flash("job deleted", "success")
+        # If a job is found and the logged-in user owns it
+        if job and job["user_id"] == session["user"]["id"]:
+            sql = "DELETE FROM jobs WHERE id=?"
+            db.execute(sql, (id,))
+            flash("Job deleted", "success")
             return redirect("/find_job")
 
-        flash("Invalid job", "error")
+        # --- CHECK AND DELETE FROM OFFERS ---
+        sql = "SELECT user_id FROM offers WHERE id=?"
+        offer = db.execute(sql, params).fetchone()
+
+        # If an offer is found and the logged-in user owns it
+        if offer and offer["user_id"] == session["user"]["id"]:
+            sql = "DELETE FROM offers WHERE id=?"
+            db.execute(sql, (id,))
+            flash("Offer deleted", "success") # Updated flash text for clarity
+            return redirect("/find_job")
+
+        # If it's not a job, not an offer, or user doesn't own it
+        flash("Invalid job or unauthorized action", "error")
         return redirect("/find_job")
-#--------------------------------------------------------------
+
 #accapted jobs funchtion 
 #--------------------------------------------------------------
 @app.get("/job/<int:id>/accept")
@@ -304,7 +307,7 @@ def process_accept_job(id):
 #--------------------------------------------------------------
 # Edit job function  
 #--------------------------------------------------------------
-@app.get("/job/<int:id>/edit") # Fixed: Uses correct Flask route syntax
+@app.get("/job/<int:id>/edit") 
 @login_required
 def show_edit_job_form(id):
     with connect_db() as db:
@@ -324,7 +327,7 @@ def show_edit_job_form(id):
 # -----------------------------------------------------------
 # Handle new edit job
 # -----------------------------------------------------------
-@app.post("/job/<int:id>/update") # Fixed: Uses correct Flask route syntax
+@app.post("/job/<int:id>/update") 
 @login_required
 def process_edited_updated(id):
     title = request.form.get("title", "").strip()
@@ -345,7 +348,7 @@ def process_edited_updated(id):
         """
         params = (title, notes, due_by_date, address, id, user_id)
         db.execute(sql, params)
-        db.commit() # Fixed: Saves the changes to the database permanently
+        db.commit() # Saves the changes to the database permanently
 
         flash("Job updated successfully", "success")
         return redirect("/")
