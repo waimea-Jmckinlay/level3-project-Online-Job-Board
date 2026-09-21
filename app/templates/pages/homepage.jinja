@@ -26,50 +26,41 @@
 
           {% if session.logged_in %}
 
-          <a
-          class="button"
-          title="Edit message"
-          href= "/job/{{job.id}}/edit">Edit</a>
+            <a
+            class="button"
+            title="Edit message"
+            href= "/job/{{job.id}}/edit">Edit</a>
 
-          <a
-          class="button"
-          title="Delete job"
-          onclick="return confirm('Really delete?')"
-          href="/job/{{job.id}}/delete"
-                        >delete</a>
+            <a
+            class="button"
+            title="Delete job"
+            onclick="return confirm('Really delete?')"
+            href="/job/{{job.id}}/delete"
+                          >delete</a>
+  
           {% endif %}
 
 
        {% endfor %} 
-        
+
       {% if session.logged_in %}
-        <h2>Offers</h2>
-        
 
-        {% for offer in offers %} 
-          <div class="offers-items">
-            <header>
-           </header>
-            <p>{{ offer.accepted }}</p>
-           
-          </div>
-            <a
-          class="button"
-          title="Edit message"
-          href= "/job/{{offer.id}}/edit">Edit </a>
+        <h3>My Offers</h3>
 
-          <a
-          class="button"
-          title="Delete job"
-          onclick="return confirm('Really delete?')"
-          href="/job/{{offer.id}}/delete"
-                        >delete</a>
+            {% for offer in offers %}
+              {% if offer.user_id == session.user.id %}
+                <div>
+                  <p>Job: {{jobs[offer.job_id].title}}</p>
+                  <p>Notes: {{jobs[offer.job_id].notes}}</p>
+                  <p>Accepted: {{offer.accepted}}</p>
+                  <p>Done: {{offer.job_done}}</p>
+                </div>
+              {% endif%}
+            {% endfor %}
 
-
-          
-        {% endfor %}
       {% endif %}
 
+      
     </section>
 
 {% endblock %}

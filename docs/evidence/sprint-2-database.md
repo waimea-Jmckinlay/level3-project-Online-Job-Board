@@ -49,7 +49,7 @@ so here wee are testing if i can get the offers table to work and to show the jo
 
 <video src="screenshots/20260913-2349-40.5372822.mp4" controls title="Title"></video>
 
-as we can see it dind't go very well 
+as we can see it didn't go very well 
 
 ### Changes / Improvements
 ok take 2 done a bounch of changes
@@ -60,30 +60,28 @@ now it's only broken on the login page
 
 ### Changes / Improvements
 
-of so re wirte some of the code changed it from a right join to inner join 
+ so I re-wirte some of the code changed it from a right join to inner join 
 and change flask around 
 
 ![Alt text](screenshots/working_home_page.png)
 
 now it works but it is reping the same job for the number of times i apply for if 
 which is fine cos i plan on only letting people apply for it once
-## Testing FEATURE NAME HERE
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+## refixing the last festure because it broke and i had to make it better so it doesn't do that 
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![Alt text](screenshots/fixed_db.png)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+so to fixed it i removed the innerjoint and just ran 3 sql promps one for each table 
+and then i would select the data i wanted to show for the offers  
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![Alt text](screenshots/home_page_inti_.py.png)
 
-
-## ETC...
-
-
+and the home page offer part 
+![Alt text](screenshots/homepage_jinja.png)
 ## Sprint Review
 
-Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
+this sprint has moved forward my project forward as now all the bascis/main feachers are uasble 
 

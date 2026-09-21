@@ -68,7 +68,10 @@ def return_user():
             params = ()
             jobs = db.execute(sql, params).fetchall()
 
-        return render_template("pages/homepage.jinja", jobs=jobs, offers=offers, users=users )
+            users=None
+            offers=None
+
+        return render_template("pages/homepage.jinja", jobs=jobs, offers=offers, users=users, )
 #---------------------------------------------------------------
 #make job page
 #---------------------------------------------------------------
@@ -280,6 +283,7 @@ def process_delete_job(id):
         flash("Invalid job or unauthorized action", "error")
         return redirect("/find_job")
 
+#----------------------------------------------------------------
 #accapted jobs funchtion 
 #--------------------------------------------------------------
 @app.get("/job/<int:id>/accept")
@@ -351,6 +355,25 @@ def process_edited_updated(id):
         db.commit() # Saves the changes to the database permanently
 
         flash("Job updated successfully", "success")
+        return redirect("/")
+#--------------------------------------------------------------
+# job_click  
+#--------------------------------------------------------------
+@app.get("/job/<int:id>/job_offers") 
+@login_required
+def show_job_Offer_form(id):
+    with connect_db() as db:
+        sql = """
+            SELECT id, title, notes, due_by_date, user_id, address FROM jobs WHERE id=?
+        """
+        params = (id,)
+        job = db.execute(sql, params).fetchone()
+
+        # Security check: Ensure job exists and belongs to the logged-in user
+        if job and job["user_id"] == session["user"]["id"]:
+            return render_template("pages/job_page.jinja", job=job)
+
+        flash("Job not found or unauthorized access", "error")
         return redirect("/")
 
 #===========================================================
