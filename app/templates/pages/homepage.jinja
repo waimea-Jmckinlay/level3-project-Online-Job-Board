@@ -37,6 +37,11 @@
             onclick="return confirm('Really delete?')"
             href="/job/{{job.id}}/delete"
                           >delete</a>
+
+            <a
+            class="button"
+            title="job info"
+            href= "/job/{{job.id}}/job_offers">info</a>
   
           {% endif %}
 
@@ -47,17 +52,20 @@
 
         <h3>My Offers</h3>
 
+          {% if offers | length > 0 %}
+
             {% for offer in offers %}
-              {% if offer.user_id == session.user.id %}
                 <div>
-                  <p>Job: {{jobs[offer.job_id].title}}</p>
-                  <p>Notes: {{jobs[offer.job_id].notes}}</p>
-                  <p>Accepted: {{offer.accepted}}</p>
-                  <p>Done: {{offer.job_done}}</p>
+                  <p> title: {{offer.title}}</p>
+                  <p> Notes: {{offer.notes}}</p>
+                  <p> Accepted: {{offer.accepted}}</p>
+                  <p> Done: {{offer.job_done}}</p>
                 </div>
-              {% endif%}
             {% endfor %}
 
+          {% else %}
+            <p>None</p>
+          {% endif %}
       {% endif %}
 
       

@@ -47,9 +47,18 @@ def return_user():
             jobs = db.execute(sql, params).fetchall()
 
             sql = """
-            SELECT * FROM offers
+                SELECT 
+                    jobs.title,
+                    jobs.notes,
+                    offers.accepted,
+                    offers.job_done
+
+                FROM offers
+                JOIN jobs ON offers.job_id = jobs.id
+
+                WHERE offers.user_id = ?
             """
-            params = ()
+            params = (user_id, )
             offers = db.execute(sql, params).fetchall()
 
             sql = """
@@ -58,7 +67,8 @@ def return_user():
             params = ()
             users = db.execute(sql, params).fetchall()
 
-
+            print(offers)
+            
         else:
             sql = """
                 SELECT id, title, notes, due_by_date, address, user_id
@@ -71,7 +81,7 @@ def return_user():
             users=None
             offers=None
 
-        return render_template("pages/homepage.jinja", jobs=jobs, offers=offers, users=users, )
+        return render_template("pages/homepage.jinja", jobs=jobs, offers=offers, users=users )
 #---------------------------------------------------------------
 #make job page
 #---------------------------------------------------------------
@@ -263,25 +273,23 @@ def process_delete_job(id):
 
         # If a job is found and the logged-in user owns it
         if job and job["user_id"] == session["user"]["id"]:
+
+            # First delete any offers for the job
+            sql = "DELETE FROM offers WHERE job_id=?"
+            result = db.execute(sql, (id,))
+            if result.rowcount > 0:
+                flash("Job offer deleted", "success") # Updated flash text for clarity
+
+            # Then delete the job itself
             sql = "DELETE FROM jobs WHERE id=?"
             db.execute(sql, (id,))
             flash("Job deleted", "success")
-            return redirect("/find_job")
 
-        # --- CHECK AND DELETE FROM OFFERS ---
-        sql = "SELECT user_id FROM offers WHERE id=?"
-        offer = db.execute(sql, params).fetchone()
-
-        # If an offer is found and the logged-in user owns it
-        if offer and offer["user_id"] == session["user"]["id"]:
-            sql = "DELETE FROM offers WHERE id=?"
-            db.execute(sql, (id,))
-            flash("Offer deleted", "success") # Updated flash text for clarity
-            return redirect("/find_job")
+            return redirect("/")
 
         # If it's not a job, not an offer, or user doesn't own it
         flash("Invalid job or unauthorized action", "error")
-        return redirect("/find_job")
+        return redirect("/")
 
 #----------------------------------------------------------------
 #accapted jobs funchtion 
@@ -364,14 +372,27 @@ def process_edited_updated(id):
 def show_job_Offer_form(id):
     with connect_db() as db:
         sql = """
-            SELECT id, title, notes, due_by_date, user_id, address FROM jobs WHERE id=?
+            SELECT * FROM jobs WHERE id = ?
         """
         params = (id,)
         job = db.execute(sql, params).fetchone()
 
+        sql = """
+            SELECT * FROM offers
+            """
+        params = ()
+        offers = db.execute(sql, params).fetchall()
+
+        sql = """
+            SELECT * FROM users
+            """
+        params = ()
+        users = db.execute(sql, params).fetchall()
+
+
         # Security check: Ensure job exists and belongs to the logged-in user
         if job and job["user_id"] == session["user"]["id"]:
-            return render_template("pages/job_page.jinja", job=job)
+            return render_template("pages/job_page.jinja", job=job, users=users, offers=offers,)
 
         flash("Job not found or unauthorized access", "error")
         return redirect("/")

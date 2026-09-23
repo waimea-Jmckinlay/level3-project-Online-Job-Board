@@ -32,9 +32,9 @@ class UserTable:
     """
 
     SEED_DATA = """
-        INSERT INTO users (id, username, real_name, password_hash, contact_info, admin, rating )
-        VALUES            (0, "bob",  "sam", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", "do not recamend "),
-                          (1, "ham",  "damm", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", " will recamend ")
+        INSERT INTO users (username, real_name, password_hash, contact_info, admin, rating )
+        VALUES            ("bob",  "sam", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", "do not recamend "),
+                          ("ham",  "damm", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", " will recamend ")
                
 
     """
@@ -57,13 +57,13 @@ class JobTable:
     """
 
     SEED_DATA = """
-        INSERT INTO jobs (id, title, notes, due_by_date, address, user_id)
+        INSERT INTO jobs (title, notes, due_by_date, address, user_id)
         VALUES 
-            (0, "Leaking roof!", "please repear my roof" , "2026-08-13", "5 Main Street", 1),
-            (1, "Broken tiles",  "I need my bathroom tiles fixing" , "2026-10-13", "123 Big Road", 2),
-            (2, "Clean dishes", "Wash all my dirty dishes, please" , "2026-08-11", "123 Big Road", 2),
-            (3, "Broken fence", "My fence has a broken post" , "2026-10-23", "5 Main Street", 1),
-            (4, "Sheep have escaped", "please find my sheep" , "2026-08-10", "5 Main Street", 1)
+            ("Leaking roof!", "please repear my roof" , "2026-08-13", "5 Main Street", 1),
+            ("Broken tiles",  "I need my bathroom tiles fixing" , "2026-10-13", "123 Big Road", 2),
+            ("Clean dishes", "Wash all my dirty dishes, please" , "2026-08-11", "123 Big Road", 2),
+            ("Broken fence", "My fence has a broken post" , "2026-10-23", "5 Main Street", 1),
+            ("Sheep have escaped", "please find my sheep" , "2026-08-10", "5 Main Street", 1)
 
 
     """
@@ -88,8 +88,9 @@ class OffersTable:
     SEED_DATA = """
         INSERT INTO offers (job_id, user_id, accepted, job_done)
         VALUES 
-            ("1","1","1","0" ),
-            ("2","0","0","0" )
+            (1,1,1,0 ),
+            (2,1,0,0 ),
+            (1,2,0,0 )
 
     """
 
