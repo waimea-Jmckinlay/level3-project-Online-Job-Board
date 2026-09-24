@@ -74,13 +74,20 @@ which is fine cos i plan on only letting people apply for it once
 
 ### Changes / Improvements
 
-so to fixed it i removed the innerjoint and just ran 3 sql promps one for each table 
+so to fixed it i removed the inner joint and just ran 3 sql promps one for each table 
 and then i would select the data i wanted to show for the offers  
 
 ![Alt text](screenshots/home_page_inti_.py.png)
 
 and the home page offer part 
 ![Alt text](screenshots/homepage_jinja.png)
+
+### delate
+now the issue is with the delating jobs but it's happening because of my last fix so i need to find one that saterflys both functions 
+### inprovements
+so i was thinking about it to much I just needed a nomal joint not anything specal like a right or inner joint 
+![Alt text](screenshots/joint.png)
+
 ## Sprint Review
 
 this sprint has moved forward my project forward as now all the bascis/main feachers are uasble 

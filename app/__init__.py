@@ -302,20 +302,28 @@ def process_accept_job(id):
             SELECT user_id FROM jobs WHERE id=?
         """
         params = (id,)
-        jobs = db.execute(sql, params).fetchone()
-        users = db.execute(sql, params).fetchone()
+        job = db.execute(sql, params).fetchone()
 
-        if jobs and users ["user_id"] == session["user"]["id"]:
-
-
-            params = (id,)
-            db.execute(sql, params)
-
-            
+        if not job:
+            flash("Invalid job", "error")
             return redirect("/find_job")
 
-        flash("Invalid job", "error")
+        if job["user_id"] == session["user"]["id"]:
+            flash("You can't accept your own job!", "error")
+            return redirect("/find_job")
+
+        sql = """
+            INSERT INTO offers (job_id, user_id)
+            VALUES (?,?);
+        """
+        user_id = session["user"]["id"]
+        job_id = id
+        params = (job_id, user_id,)
+        db.execute(sql, params)
+        flash("Job accepted!", "success")
         return redirect("/find_job")
+
+        
 #--------------------------------------------------------------
 # Edit job function  
 #--------------------------------------------------------------
@@ -378,9 +386,15 @@ def show_job_Offer_form(id):
         job = db.execute(sql, params).fetchone()
 
         sql = """
-            SELECT * FROM offers
+            SELECT 
+                users.username
+
+                FROM offers
+                JOIN users ON offers.user_id = users.id
+                
+                WHERE offers.job_id = ?
             """
-        params = ()
+        params = (id,)
         offers = db.execute(sql, params).fetchall()
 
         sql = """
