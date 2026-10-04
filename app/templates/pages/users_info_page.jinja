@@ -1,0 +1,33 @@
+{#=====================================================
+Job page
+=====================================================#}
+
+{% extends 'pages/_base.jinja' %}
+
+{% block content %}
+
+
+    <section id="jobs-list">
+
+          <div class="jobs-item">
+            <header>
+                <h3>{{ job.title }}</h3>
+            </header>
+
+            <p>{{ job.notes }}</p>
+            <p>{{ job.address }}</p>
+            <p>{{ job.due_by_date }}</p>
+          </div>
+        {% if offers | length > 0 %}
+          {% for offer in offers %}
+
+            <div>
+            <p> username: {{offer.username}}</p>
+            </div>
+
+          {% endfor %}
+          {% else %}
+          <P>None</P>
+        {%endif%}  
+
+{% endblock %}          
