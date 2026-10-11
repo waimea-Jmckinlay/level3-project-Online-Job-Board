@@ -25,6 +25,12 @@ Job page
             <p> username: {{offer.username}}</p>
             </div>
 
+            <a
+            class="button"
+            title="job info"
+            href= "/job/{{offers.user_id}}/job_offers/user_show">info</a>
+
+
           {% endfor %}
           {% else %}
           <P>None</P>

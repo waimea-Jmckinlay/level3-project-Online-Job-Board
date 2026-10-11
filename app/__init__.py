@@ -410,7 +410,26 @@ def show_job_Offer_form(id):
 
         flash("Job not found or unauthorized access", "error")
         return redirect("/")
+    
+#===========================================================
+# handle click on user 
+#===========================================================
+@app.get("/job/<int:id>/job_offers/user_show") 
+@login_required
+def show_applyed_user(id):
+    with connect_db() as db:
+         
+         sql = """
+            SELECT * FROM users where offer.user_id = ?
+        """
+    params = (id,)
+    user = db.execute(sql, params).fetchone()
 
+
+
+
+
+    return render_template("pages/user_info_page.jinja", user=user,)
 #===========================================================
 # Configure the app
 #===========================================================

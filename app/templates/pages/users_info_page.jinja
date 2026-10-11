@@ -11,19 +11,14 @@ Job page
 
           <div class="jobs-item">
             <header>
-                <h3>{{ job.title }}</h3>
+                <h3>{{ users.username }}</h3>
             </header>
 
-            <p>{{ job.notes }}</p>
-            <p>{{ job.address }}</p>
-            <p>{{ job.due_by_date }}</p>
+            <p>{{ users.real_name }}</p>
+            <p>{{ users.contact_info }}</p>
+            <p>{{ users.rating }}</p>
           </div>
-        {% if offers | length > 0 %}
-          {% for offer in offers %}
 
-            <div>
-            <p> username: {{offer.username}}</p>
-            </div>
 
           {% endfor %}
           {% else %}
