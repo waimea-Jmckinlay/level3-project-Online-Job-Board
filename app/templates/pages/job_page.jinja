@@ -18,18 +18,19 @@ Job page
             <p>{{ job.address }}</p>
             <p>{{ job.due_by_date }}</p>
           </div>
+          
         {% if offers | length > 0 %}
           {% for offer in offers %}
 
-            <div>
-            <p> username: {{offer.username}}</p>
+            <div class="offer">
+              <p>{{offer.real_name}} ({{offer.username}})</p>
+
+              <a
+              class="button"
+              title="job info"
+              href= "/job/{{ offer.job_id }}/job_offers/user_show/{{ offer.user_id }}">info</a>
+
             </div>
-
-            <a
-            class="button"
-            title="job info"
-            href= "/job/{{offers.user_id}}/job_offers/user_show">info</a>
-
 
           {% endfor %}
           {% else %}

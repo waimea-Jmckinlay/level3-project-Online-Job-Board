@@ -33,6 +33,9 @@ update some of the things in the data base is wroung as if i used - in the text 
 
 ![Alt text](screenshots/dv-v2.png)
 
+so later on i realised that a user would have more that one rating  so i added the ratings to the offers table because that rating will allways be for that user and 1 user can have many offers thus many ratings but could also be null because not every offer will be completed 
+
+![Alt text](screenshots/rating_change.png)
 
 ### Required Data Input
 

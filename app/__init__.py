@@ -387,7 +387,10 @@ def show_job_Offer_form(id):
 
         sql = """
             SELECT 
-                users.username
+                users.username,
+                users.real_name,
+                users.id AS user_id,
+                offers.job_id
 
                 FROM offers
                 JOIN users ON offers.user_id = users.id
@@ -397,16 +400,9 @@ def show_job_Offer_form(id):
         params = (id,)
         offers = db.execute(sql, params).fetchall()
 
-        sql = """
-            SELECT * FROM users
-            """
-        params = ()
-        users = db.execute(sql, params).fetchall()
-
-
         # Security check: Ensure job exists and belongs to the logged-in user
         if job and job["user_id"] == session["user"]["id"]:
-            return render_template("pages/job_page.jinja", job=job, users=users, offers=offers,)
+            return render_template("pages/job_page.jinja", job=job, offers=offers,)
 
         flash("Job not found or unauthorized access", "error")
         return redirect("/")
@@ -414,22 +410,27 @@ def show_job_Offer_form(id):
 #===========================================================
 # handle click on user 
 #===========================================================
-@app.get("/job/<int:id>/job_offers/user_show") 
+@app.get("/job/<int:job_id>/job_offers/user_show/<int:user_id>") 
 @login_required
-def show_applyed_user(id):
+def show_applyed_user(job_id, user_id):
     with connect_db() as db:
          
-         sql = """
-            SELECT * FROM users where offer.user_id = ?
+        sql = """
+            SELECT * FROM users where id = ?
         """
-    params = (id,)
-    user = db.execute(sql, params).fetchone()
+        params = (user_id,)
+        user = db.execute(sql, params).fetchone()
+
+        sql = """
+            SELECT rating 
+            FROM offers 
+            WHERE user_id = ? AND rating IS NOT NULL AND TRIM(rating) != ''
+        """
+        params = (user_id,)
+        ratings = db.execute(sql, params).fetchall()
 
 
-
-
-
-    return render_template("pages/user_info_page.jinja", user=user,)
+    return render_template("pages/user_info_page.jinja", user=user, ratings=ratings, job_id=job_id)
 #===========================================================
 # Configure the app
 #===========================================================

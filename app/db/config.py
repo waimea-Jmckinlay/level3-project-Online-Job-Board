@@ -26,15 +26,16 @@ class UserTable:
            real_name TEXT NOT NULL,
            password_hash TEXT NOT NULL,
            contact_info TEXT NOT NULL,
-           admin INTEGER DEFAULT 0,
-           rating TEXT
+           admin INTEGER DEFAULT 0
         )
     """
 
     SEED_DATA = """
-        INSERT INTO users (username, real_name, password_hash, contact_info, admin, rating )
-        VALUES            ("bob",  "sam", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", "do not recamend "),
-                          ("ham",  "damm", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0", " will recamend ")
+        INSERT INTO users (username, real_name, password_hash, contact_info, admin )
+        VALUES            ("bob",  "Bob Smith", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0"),
+                          ("ham",  "Hamish McDonald", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0"),
+                          ("jim",  "Jim Harris", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0"),
+                          ("sue",  "Susan Moore", "scrypt:32768:8:1$n7eJTucLbaGmUpAM$c1776374a8d456a6eaf61bccc08db5e1fcc4ff3b3983d364c45ab13074255eeae0a393afb11f99a9fe63fb1d980992ace17a72ba70324523b11e92e36cbe4252", "phone number 54873657893", "0")
                
 
     """
@@ -79,6 +80,7 @@ class OffersTable:
            user_id INTEGER NOT NULL,
            accepted INTEGER DEFAULT 0,
            job_done INTEGER DEFAULT 0,
+           rating TEXT,
 
            FOREIGN KEY (job_id) REFERENCES jobs (id),
            FOREIGN KEY (user_id) REFERENCES users (id)
@@ -86,11 +88,14 @@ class OffersTable:
     """
 
     SEED_DATA = """
-        INSERT INTO offers (job_id, user_id, accepted, job_done)
+        INSERT INTO offers (job_id, user_id, accepted, job_done, rating)
         VALUES 
-            (1,1,1,0 ),
-            (2,1,0,0 ),
-            (1,2,0,0 )
+            (1,3,1,0, null ),
+            (2,3,0,0, null ),
+            (1,4,0,0, null ),
+            (3,3,1,1, "Perfect! Would recommend" ),
+            (4,3,1,1, "Did a terrible job!" ),
+            (5,4,1,0, null )
 
     """
 

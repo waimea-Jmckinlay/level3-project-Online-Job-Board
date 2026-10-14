@@ -7,22 +7,24 @@ Job page
 {% block content %}
 
 
-    <section id="jobs-list">
 
           <div class="jobs-item">
             <header>
-                <h3>{{ users.username }}</h3>
+                <h3>{{ user.real_name }}</h3>
             </header>
+            
+            <p>{{ user.username }}</p>
+            <p>{{ user.contact_info }}</p>
+            <p>{{ ratings }}</p>
 
-            <p>{{ users.real_name }}</p>
-            <p>{{ users.contact_info }}</p>
-            <p>{{ users.rating }}</p>
           </div>
 
+ <a
+  class="button"
+  title=" back to job"
+  href= "/job/{{ job_id }}/job_offers">back to job
+</a>
 
-          {% endfor %}
-          {% else %}
-          <P>None</P>
-        {%endif%}  
+
 
 {% endblock %}          
