@@ -15,15 +15,22 @@ Job page
             
             <p>{{ user.username }}</p>
             <p>{{ user.contact_info }}</p>
-            <p>{{ ratings }}</p>
-
+              <ul>
+              {% if ratings | length > 0 %}
+              {%for rating in ratings %}
+              <p> {{ rating }} </p>
+              {%endfor%}
+              {% else %}
+              <P>None</P>
+              {%endif%}
+            </ul>
           </div>
 
- <a
-  class="button"
-  title=" back to job"
-  href= "/job/{{ job_id }}/job_offers">back to job
-</a>
+  <a
+   class="button"
+   title=" back to job"
+   href= "/job/{{ job_id }}/job_offers">back to job
+  </a>
 
 
 

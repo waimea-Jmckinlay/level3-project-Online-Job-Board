@@ -292,7 +292,7 @@ def process_delete_job(id):
         return redirect("/")
 
 #----------------------------------------------------------------
-#accapted jobs funchtion 
+# other user accapted jobs funchtion 
 #--------------------------------------------------------------
 @app.get("/job/<int:id>/accept")
 @login_required
@@ -390,7 +390,9 @@ def show_job_Offer_form(id):
                 users.username,
                 users.real_name,
                 users.id AS user_id,
-                offers.job_id
+                offers.id AS offer_id,
+                offers.job_id,
+                offers.accepted
 
                 FROM offers
                 JOIN users ON offers.user_id = users.id
@@ -410,7 +412,7 @@ def show_job_Offer_form(id):
 #===========================================================
 # handle click on user 
 #===========================================================
-@app.get("/job/<int:job_id>/job_offers/user_show/<int:user_id>") 
+@app.get("/job/<int:job_id>/offers/user/<int:user_id>") 
 @login_required
 def show_applyed_user(job_id, user_id):
     with connect_db() as db:
@@ -431,6 +433,53 @@ def show_applyed_user(job_id, user_id):
 
 
     return render_template("pages/user_info_page.jinja", user=user, ratings=ratings, job_id=job_id)
+
+
+#===========================================================
+# handle accepting user
+#===========================================================
+@app.get("/job/<int:job_id>/offers/<int:offer_id>/accept") 
+@login_required
+def accept_applyed_user(job_id, offer_id):
+    with connect_db() as db:
+
+        sql = """
+           UPDATE offers
+            SET accepted = 1
+            WHERE id = ?
+        """
+        params = (offer_id,)
+        db.execute(sql, params)
+
+
+    return redirect(f"/job/{job_id}/job_offers")
+
+#===========================================================
+# remove applyed user
+#===========================================================
+@app.get("/job/<int:job_id>/job_offers/accept_user/<int:user_id>") 
+@login_required
+def remove_applyed_user(job_id, user_id):
+    with connect_db() as db:
+         
+        sql = """
+            SELECT * FROM users where id = ?
+        """
+        params = (user_id,)
+        user = db.execute(sql, params).fetchone()
+
+        sql = """
+            DELETE FROM offers
+            WHERE offers.job_id=? AND offers.user_id=?
+             
+        """
+        params = (user_id, job_id,)
+        accepted = db.execute(sql, params)
+
+
+    return redirect("/job/<int:id>/job_offers", user=user, accepted=accepted, job_id=job_id)
+
+
 #===========================================================
 # Configure the app
 #===========================================================

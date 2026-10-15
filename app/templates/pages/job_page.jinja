@@ -25,10 +25,24 @@ Job page
             <div class="offer">
               <p>{{offer.real_name}} ({{offer.username}})</p>
 
+              {% if offer.accepted %}
+                ACCEPTED
+              {% endif %}
+
               <a
               class="button"
               title="job info"
-              href= "/job/{{ offer.job_id }}/job_offers/user_show/{{ offer.user_id }}">info</a>
+              href= "/job/{{ offer.job_id }}/offers/user/{{ offer.user_id }}">see user info</a>
+
+              <a
+              class="button"
+              title="accpte user"
+              href= "/job/{{offer.job_id}}/offers/{{ offer.offer_id }}/accept">accept offer</a>
+
+              <a
+              class="button"
+              title="remove user"
+              href= "/job/{{offer.job_id}}/job_offers/accept_user/{{ offer.user_id }}">reject offer</a>
 
             </div>
 
