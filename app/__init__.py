@@ -457,27 +457,21 @@ def accept_applyed_user(job_id, offer_id):
 #===========================================================
 # remove applyed user
 #===========================================================
-@app.get("/job/<int:job_id>/job_offers/accept_user/<int:user_id>") 
+@app.get("/job/<int:job_id>/offers/<int:offer_id>/delete") 
 @login_required
-def remove_applyed_user(job_id, user_id):
+def remove_applyed_user(job_id, offer_id):
     with connect_db() as db:
          
-        sql = """
-            SELECT * FROM users where id = ?
-        """
-        params = (user_id,)
-        user = db.execute(sql, params).fetchone()
 
         sql = """
             DELETE FROM offers
-            WHERE offers.job_id=? AND offers.user_id=?
-             
+            WHERE offers.id = ?
         """
-        params = (user_id, job_id,)
-        accepted = db.execute(sql, params)
+        params = (offer_id,)
+        db.execute(sql, params)
 
 
-    return redirect("/job/<int:id>/job_offers", user=user, accepted=accepted, job_id=job_id)
+    return redirect(f"/job/{job_id}/job_offers")
 
 
 #===========================================================

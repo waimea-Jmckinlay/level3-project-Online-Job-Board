@@ -22,13 +22,14 @@
             <p>{{ job.notes }}</p>
             <p>{{ job.address }}</p>
             <p>{{ job.due_by_date }}</p>
+
           </div>
 
           {% if session.logged_in %}
 
             <a
             class="button"
-            title="Edit message"
+            title="Edit job"
             href= "/job/{{job.id}}/edit">Edit</a>
 
             <a

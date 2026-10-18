@@ -17,19 +17,19 @@ Continue to develop the web application to the point that it provides all key fu
     - Etc.
 
 
-## Testing FEATURE NAME HERE
+## Testing FEATURE removing users from offered job
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+so here im testing if i can remove users that has offered to do a job not delete that user from the db but the job offer insted 
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-![Placeholder](screenshots/placeholder.png)
+<video src="screenshots/20261018-2314-13.1056762.mp4" controls title="Title"></video>
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+so as we can see here we where able to delete the offer that user gave us we can also accpted users too 
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
+![Alt text](screenshots/20261018-2317-45.9418073.gif)
+
+as you can see here we can't really unaccpted users but you can still remove the offer after it was accpted still which should work insted of unaccpted 
 
 
 ## Testing FEATURE NAME HERE
