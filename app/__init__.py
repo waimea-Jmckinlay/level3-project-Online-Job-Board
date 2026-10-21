@@ -51,7 +51,9 @@ def return_user():
                     jobs.title,
                     jobs.notes,
                     offers.accepted,
-                    offers.job_done
+                    offers.job_done,
+                    offers.job_id,
+                    offers.id
 
                 FROM offers
                 JOIN jobs ON offers.job_id = jobs.id
@@ -473,6 +475,47 @@ def remove_applyed_user(job_id, offer_id):
 
     return redirect(f"/job/{job_id}/job_offers")
 
+#===========================================================
+# complet job button 
+#===========================================================
+@app.get("/job/<int:job_id>/offer/<int:offer_id>/complet") 
+@login_required
+def finsh_job( job_id, offer_id, offers_accepted,):
+    with connect_db() as db:
+
+        sql = """
+            SELECT 
+            offers.job_id,
+            offers.user_id,
+            offers.accpeted AS offers_accepted,
+            offers.job_done,
+            jobs.id
+            where offer_id = ? AND offers_accepted = 1
+        """
+        params = (offer_id, offers_accepted, )
+        db.execute(sql, params)
+
+    return render_template("pages/give_rating.jinja", job_id = job_id )
+
+#=========================================================== 
+# complet job button 
+#===========================================================
+@app.post("give_rating") 
+@login_required
+def finsh_job_post(offer_id):
+    rating = request.form.get("rating", "").strip()
+    with connect_db() as db:
+
+        sql = """
+            UPDATE offers SET
+            rating = ?
+            job_done = 1
+            WHERE rating=?
+        """
+        params = (rating, offer_id, )
+        db.execute(sql, params)
+
+    return redirect ( "/" )
 
 #===========================================================
 # Configure the app

@@ -17,7 +17,7 @@ Continue to develop the web application to the point that it provides all key fu
     - Etc.
 
 
-## Testing FEATURE removing users from offered job
+##  removing users from offered job
 
 so here im testing if i can remove users that has offered to do a job not delete that user from the db but the job offer insted 
 
@@ -32,36 +32,38 @@ so as we can see here we where able to delete the offer that user gave us we can
 as you can see here we can't really unaccpted users but you can still remove the offer after it was accpted still which should work insted of unaccpted 
 
 
-## Testing FEATURE NAME HERE
+### see job done 
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+im seeing if the job can only be marked as done when a user has been accpted as a user but we are going start off small with just haveing the button apear 
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![Alt text](screenshots/image5.png)
+
+so this happened because i forgut to change the name of the def 
+
+### Changes / Improvements
+![Alt text](screenshots/image6.png)
+
+ok the page works but theirs no buttons apearing
+
+
+
+
+## change of planes
+
+ive been enlighten that all the complutated stuff like buttons should only be showned once you've click into a job rather than displayed along a list with many jobs so im testing 
+how well i can make this fix 
+
+![Alt text](screenshots/image7.png)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+so it wasn't bad and i got it to work but we are also going finsh the job on this page too 
 
 **PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
 
 
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
-
-## ETC...
-
+## faving jobs finshes and give other users ratting
 
 ## Sprint Review
 
 Replace this text with a statement about how the sprint has moved the project forward - key success point, any things that didn't go so well, etc.
-

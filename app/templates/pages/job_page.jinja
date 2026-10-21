@@ -17,8 +17,23 @@ Job page
             <p>{{ job.notes }}</p>
             <p>{{ job.address }}</p>
             <p>{{ job.due_by_date }}</p>
+
+             <a
+            class="button"
+            title="Edit job"
+            href= "/job/{{job.id}}/edit">Edit</a>
+
+            <a
+            class="button"
+            title="Delete job"
+            onclick="return confirm('Really delete?')"
+            href="/job/{{job.id}}/delete"
+                          >delete</a>
+
+
+
+
           </div>
-          
         {% if offers | length > 0 %}
           {% for offer in offers %}
 
@@ -28,6 +43,16 @@ Job page
               {% if offer.accepted %}
                 ACCEPTED
               {% endif %}
+
+                {% if offer.accepted %}
+
+                <a
+                  class="button"
+                  title="job done"
+                  href= "/job/{{ offer.job_id }}/offer/{{ offer.user_id }}/complet"
+                    >finsh job
+                </a>
+                {% endif %}
 
               <a
               class="button"
