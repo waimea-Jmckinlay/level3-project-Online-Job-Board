@@ -485,12 +485,15 @@ def finsh_job( job_id, offer_id):
 
         sql = """
             SELECT 
+            offers.id,
             offers.job_id,
             offers.user_id,
-            offers.accpeted AS offer_accepted,
+            offers.accepted AS offer_accepted,
             offers.job_done,
             jobs.id
-            where offer_id = ? AND offer_accepted = 1
+            FROM offers
+            JOIN jobs ON offers.job_id = jobs.id
+            WHERE offers.id = ? AND offer_accepted = 1
         """
         params = (offer_id,)
         db.execute(sql, params)
@@ -510,8 +513,10 @@ def finsh_job_post(offer_id):
             UPDATE offers SET
             rating = ?
             job_done = 1
-            WHERE rating=?
-        """
+            FROM offers
+            WHERE offer_id = ?
+            """
+        
         params = (rating, offer_id, )
         db.execute(sql, params)
 
