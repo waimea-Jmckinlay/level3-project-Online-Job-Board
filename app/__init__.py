@@ -480,27 +480,27 @@ def remove_applyed_user(job_id, offer_id):
 #===========================================================
 @app.get("/job/<int:job_id>/offer/<int:offer_id>/complet") 
 @login_required
-def finsh_job( job_id, offer_id, offers_accepted,):
+def finsh_job( job_id, offer_id):
     with connect_db() as db:
 
         sql = """
             SELECT 
             offers.job_id,
             offers.user_id,
-            offers.accpeted AS offers_accepted,
+            offers.accpeted AS offer_accepted,
             offers.job_done,
             jobs.id
-            where offer_id = ? AND offers_accepted = 1
+            where offer_id = ? AND offer_accepted = 1
         """
-        params = (offer_id, offers_accepted, )
+        params = (offer_id,)
         db.execute(sql, params)
 
-    return render_template("pages/give_rating.jinja", job_id = job_id )
+    return render_template("pages/give_rating.jinja", job_id = job_id, )
 
 #=========================================================== 
 # complet job button 
 #===========================================================
-@app.post("give_rating") 
+@app.post("/give_rating") 
 @login_required
 def finsh_job_post(offer_id):
     rating = request.form.get("rating", "").strip()

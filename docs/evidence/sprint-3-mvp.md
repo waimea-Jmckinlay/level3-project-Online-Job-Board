@@ -10,11 +10,11 @@ Continue to develop the web application to the point that it provides all key fu
 **Edit these goals as needed**
 
 - Create the following web pages:
-    - Form for wsinging up and login & creating and applying for jobs & 
-    - Etc.
+    - Form for wsinging up and login & creating and applying for jobs & completing them 
+
 - Develop SQL database queries to:
-    - Add a new ...
-    - Etc.
+    - finshes jobs and make jobs, remove user offers  
+
 
 
 ##  removing users from offered job
@@ -58,11 +58,16 @@ how well i can make this fix
 ### Changes / Improvements
 
 so it wasn't bad and i got it to work but we are also going finsh the job on this page too 
+![Alt text](screenshots/image8.png)
+if you look at the top it has the right url i want it's just not finding the page 
+
 
 **PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
 
 
-## faving jobs finshes and give other users ratting
+## having jobs finshes and give other users ratting
+so ran into an issue the link isn't linking to the page
+
 
 ## Sprint Review
 
