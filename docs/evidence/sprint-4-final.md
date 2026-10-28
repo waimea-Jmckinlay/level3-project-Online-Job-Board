@@ -16,41 +16,42 @@ Develop the system until it is fully featured, with a refined UI and it satisfie
 
 ## Testing FEATURE NAME HERE
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+the buttons are weard and more like links so lets fix that 
+i did a little bit before taking a screan shot but this is stil not finshed 
 
 **PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
 
-![Placeholder](screenshots/placeholder.png)
+![!\[Alt text\](image.png)](screenshots/9.png)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+so i got a little carred away and did a little more than the buttons but the buttons are good and working on the rest
+
+![!\[Alt text\](image.png)](screenshots/css1.png)
+
+
+## Testing background 
+
+background colour needesd to be right so im testing how it looks 
+
+![!\[Alt text\](image.png)](screenshots/css2.png)
+
+### Changes / Improvements
+
+i don't think it looks bad and nether do my end users 
 
 **PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
 
 
-## Testing FEATURE NAME HERE
+## Testing seach page 
 
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
+lets see what the search page looks like and if it's good or not 
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
-
-### Changes / Improvements
-
-Replace this text with notes any improvements you made as a result of the testing.
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
-
-## Testing FEATURE NAME HERE
-
-Replace this text with notes about what you are testing, how you tested it, and the outcome of the testing
-
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE TESTING HERE**
+![Alt text](screenshots/css3.png)
 
 ### Changes / Improvements
 
-Replace this text with notes any improvements you made as a result of the testing.
+some of the css has carred over but not all so let me fix this 
 
 **PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
 

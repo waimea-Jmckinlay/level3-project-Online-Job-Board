@@ -41,7 +41,7 @@ def return_user():
             sql = """
                 SELECT id, title, notes, due_by_date, address, user_id
                 FROM jobs 
-                WHERE user_id = ?
+                WHERE user_id = ? AND done = 0
             """
             params = (user_id,)
             jobs = db.execute(sql, params).fetchall()
@@ -51,14 +51,13 @@ def return_user():
                     jobs.title,
                     jobs.notes,
                     offers.accepted,
-                    offers.job_done,
                     offers.job_id,
                     offers.id
 
                 FROM offers
                 JOIN jobs ON offers.job_id = jobs.id
 
-                WHERE offers.user_id = ?
+                WHERE offers.user_id = ? AND jobs.done = 0
             """
             params = (user_id, )
             offers = db.execute(sql, params).fetchall()
@@ -476,48 +475,38 @@ def remove_applyed_user(job_id, offer_id):
     return redirect(f"/job/{job_id}/job_offers")
 
 #===========================================================
-# complet job button 
+# complete job button 
 #===========================================================
-@app.get("/job/<int:job_id>/offer/<int:offer_id>/complet") 
+@app.get("/job/<int:job_id>/offer/<int:offer_id>/complete") 
 @login_required
 def finsh_job( job_id, offer_id):
-    with connect_db() as db:
-
-        sql = """
-            SELECT 
-            offers.id,
-            offers.job_id,
-            offers.user_id,
-            offers.accepted AS offer_accepted,
-            offers.job_done,
-            jobs.id
-            FROM offers
-            JOIN jobs ON offers.job_id = jobs.id
-            WHERE offers.id = ? AND offer_accepted = 1
-        """
-        params = (offer_id,)
-        db.execute(sql, params)
-
-    return render_template("pages/give_rating.jinja", job_id = job_id, )
+    return render_template("pages/give_rating.jinja", job_id = job_id, offer_id=offer_id, )
 
 #=========================================================== 
-# complet job button 
+# complet job post 
 #===========================================================
-@app.post("/give_rating") 
+@app.post("/job/<int:job_id>/offer/<int:offer_id>/rating") 
 @login_required
-def finsh_job_post(offer_id):
+def finsh_job_post( job_id, offer_id):
     rating = request.form.get("rating", "").strip()
     with connect_db() as db:
 
         sql = """
             UPDATE offers SET
             rating = ?
-            job_done = 1
-            FROM offers
-            WHERE offer_id = ?
+            WHERE offers.id = ?
             """
         
         params = (rating, offer_id, )
+        db.execute(sql, params)
+
+        sql = """
+            UPDATE jobs SET
+            done = 1
+            WHERE id = ?
+            """
+        
+        params = (job_id, )
         db.execute(sql, params)
 
     return redirect ( "/" )

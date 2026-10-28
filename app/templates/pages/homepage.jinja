@@ -14,40 +14,46 @@
     <section id="jobs-list">
 
       {% for job in jobs %}
+       {% if not offers.done %}  {# Only show if it is NOT finished #}
           <div class="jobs-item">
             <header>
                 <h3>{{ job.title }}</h3>
             </header>
 
-            <p>{{ job.notes }}</p>
-            <p>{{ job.address }}</p>
-            <p>{{ job.due_by_date }}</p>
+            <div>
+              <p>{{ job.notes }}</p>
+              <p>{{ job.address }}</p>
+              <p>{{ job.due_by_date }}</p>
+            </div>
 
+            <footer>
+              {% if session.logged_in %}
+
+                <a
+                class="button"
+                title="Edit job"
+                href= "/job/{{job.id}}/edit">Edit</a>
+
+                <a
+                class="button"
+                title="Delete job"
+                onclick="return confirm('Really delete?')"
+                href="/job/{{job.id}}/delete"
+                              >delete</a>
+
+                <a
+                class="button"
+                title="job info"
+                href= "/job/{{job.id}}/job_offers">info</a>
+
+              {% endif %} 
+            </footer>
           </div>
 
-          {% if session.logged_in %}
-
-            <a
-            class="button"
-            title="Edit job"
-            href= "/job/{{job.id}}/edit">Edit</a>
-
-            <a
-            class="button"
-            title="Delete job"
-            onclick="return confirm('Really delete?')"
-            href="/job/{{job.id}}/delete"
-                          >delete</a>
-
-            <a
-            class="button"
-            title="job info"
-            href= "/job/{{job.id}}/job_offers">info</a>
-  
-          {% endif %}   
+        {% endif %}  
        {% endfor %} 
 
-      {% if session.logged_in %}
+      {% if session.logged_in  %}
 
         <h3>My Offers</h3>
 

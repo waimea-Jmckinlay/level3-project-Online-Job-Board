@@ -21,14 +21,14 @@
                 <p class="jobs-notes">{{ job.notes }}</p>
 
                 <footer>
-                    <p class="author">Posted by <strong>{{ job.title }} {{ job.notes }}</strong> ({{ job.title }})</p>
+                    <p class="author">Posted by <strong>{{ job.username }} {{ job.notes }}</strong> ({{ job.title }})</p>
 
                     {% if session.logged_in %}
                         <p><a class="button" href="/job/{{ job.id }}/accept">apply</a></p>
                     {% endif %}
 
 
-
+                    
                     {% if session.logged_in and (job.user_id == session.user.id or session.user == admin) %}
 
                         <a

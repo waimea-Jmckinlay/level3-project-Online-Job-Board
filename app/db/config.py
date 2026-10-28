@@ -52,19 +52,20 @@ class JobTable:
            due_by_date TEXT NOT NULL,
            address TEXT NOT NULL,
            user_id INTEGER NOT NULL,
+           done INTEGER DEFAULT 0,
 
            FOREIGN KEY (user_id) REFERENCES users (id)
         )
     """
 
     SEED_DATA = """
-        INSERT INTO jobs (title, notes, due_by_date, address, user_id)
+        INSERT INTO jobs (title, notes, due_by_date, address, user_id, done)
         VALUES 
-            ("Leaking roof!", "please repear my roof" , "2026-08-13", "5 Main Street", 1),
-            ("Broken tiles",  "I need my bathroom tiles fixing" , "2026-10-13", "123 Big Road", 2),
-            ("Clean dishes", "Wash all my dirty dishes, please" , "2026-08-11", "123 Big Road", 2),
-            ("Broken fence", "My fence has a broken post" , "2026-10-23", "5 Main Street", 1),
-            ("Sheep have escaped", "please find my sheep" , "2026-08-10", "5 Main Street", 1)
+            ("Leaking roof!", "please repear my roof" , "2026-08-13", "5 Main Street", 1, 0),
+            ("Broken tiles",  "I need my bathroom tiles fixing" , "2026-10-13", "123 Big Road", 2, 0),
+            ("Clean dishes", "Wash all my dirty dishes, please" , "2026-08-11", "123 Big Road", 2, 1),
+            ("Broken fence", "My fence has a broken post" , "2026-10-23", "5 Main Street", 1, 1),
+            ("Sheep have escaped", "please find my sheep" , "2026-08-10", "5 Main Street", 1, 0)
 
 
     """
@@ -79,7 +80,6 @@ class OffersTable:
            job_id INTEGER NOT NULL,
            user_id INTEGER NOT NULL,
            accepted INTEGER DEFAULT 0,
-           job_done INTEGER DEFAULT 0,
            rating TEXT,
 
            FOREIGN KEY (job_id) REFERENCES jobs (id),
@@ -88,14 +88,16 @@ class OffersTable:
     """
 
     SEED_DATA = """
-        INSERT INTO offers (job_id, user_id, accepted, job_done, rating)
+        INSERT INTO offers (job_id, user_id, accepted, rating)
         VALUES 
-            (1,3,1,0, null ),
-            (2,3,0,0, null ),
-            (1,4,0,0, null ),
-            (3,3,1,1, "Perfect! Would recommend" ),
-            (4,3,1,1, "Did a terrible job!" ),
-            (5,4,1,0, null )
+            (2,1,0, null ),
+            (3,1,0, null ),
+            (1,3,1, null ),
+            (2,3,0, null ),
+            (1,4,0, null ),
+            (3,3,1, "Perfect! Would recommend" ),
+            (4,3,1, "Did a terrible job!" ),
+            (5,4,1, null )
 
     """
 
