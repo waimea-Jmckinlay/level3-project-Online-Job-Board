@@ -17,14 +17,11 @@
        {% if not offers.done %}  {# Only show if it is NOT finished #}
           <div class="jobs-item">
             <header>
-                <h3>{{ job.title }}</h3>
-            </header>
-
-            <div>
+              <h3>{{ job.title }}</h3>
               <p>{{ job.notes }}</p>
               <p>{{ job.address }}</p>
               <p>{{ job.due_by_date }}</p>
-            </div>
+            </header>
 
             <footer>
               {% if session.logged_in %}
@@ -53,6 +50,7 @@
         {% endif %}  
        {% endfor %} 
 
+
       {% if session.logged_in  %}
 
         <h3>My Offers</h3>
@@ -60,11 +58,14 @@
           {% if offers | length > 0 %}
 
             {% for offer in offers %}
-                <div>
-                  <p> title: {{offer.title}}</p>
-                  <p> Notes: {{offer.notes}}</p>
-                  <p> Accepted: {{offer.accepted}}</p>
-                  <p> Done: {{offer.job_done}}</p>
+
+                <div class ="job-offer">
+                  <header>
+                    <p> title: {{offer.title}}</p>
+                    <p> Notes: {{offer.notes}}</p>
+                    <p> Accepted: {{offer.accepted}}</p>
+                    <p> Done: {{offer.job_done}}</p>
+                  </header>
                 </div>
             {% endfor %}
 

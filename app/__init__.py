@@ -138,8 +138,16 @@ def find_job():
          
         if user_id != None:
             sql = """
-            SELECT id, title, notes, due_by_date, address, user_id
+            SELECT jobs.id, 
+                    jobs.title, 
+                    jobs.notes, 
+                    jobs.due_by_date, 
+                    jobs.address, 
+                    jobs.user_id, 
+                    users.username,
+                    users.id
             FROM jobs
+            JOIN users on jobs.user_id = users.id
 
         """
         params = ()

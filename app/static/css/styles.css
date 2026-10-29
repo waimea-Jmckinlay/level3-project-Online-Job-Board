@@ -88,10 +88,17 @@ main > h2 {
         header {
             flex: 1;
         }
+    }
+    .job-offer{
+        padding: 1rem;
+        border: 1px solid var(--border-col);
+        border-radius: 0.5rem;
+        background-color: var(--back-col-panel);
 
-        div {
-            flex: 1;
-        }
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    
     }
 }
 /* seach page job list-------------------------------------------------------------------------*/

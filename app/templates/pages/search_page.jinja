@@ -1,5 +1,5 @@
 {#=====================================================
-  Home page
+search page
 =====================================================#}
 
 {% extends 'pages/_base.jinja' %}
@@ -16,38 +16,13 @@
             <div class="offers-accapted">
                 <header>
                     <h3>{{ job.title }}</h3>
+                    <p class="jobs-notes">{{ job.notes }}</p>
+                    <p class="author">Posted by <strong>{{ job.username }}</strong> ({{ job.username }})</p>
                 </header>
 
-                <p class="jobs-notes">{{ job.notes }}</p>
-
                 <footer>
-                    <p class="author">Posted by <strong>{{ job.username }} {{ job.notes }}</strong> ({{ job.title }})</p>
-
                     {% if session.logged_in %}
                         <p><a class="button" href="/job/{{ job.id }}/accept">apply</a></p>
-                    {% endif %}
-
-
-                    
-                    {% if session.logged_in and (job.user_id == session.user.id or session.user == admin) %}
-
-                        <a
-                            class="button"
-                            title="Edit message"
-                            href="/job/{{ job.id }}/edit"
-                        >
-                            edit
-                        </a>
-
-                        <a
-                            class="button"
-                            title="Delete job"
-                            onclick="return confirm('Really delete?')"
-                            href="/job/{{ job.id }}/delete">Delete</a>"
-                        >
-                            delete
-                        </a>
-
                     {% endif %}
                 </footer>
             </div>

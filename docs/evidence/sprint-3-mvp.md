@@ -65,6 +65,13 @@ if you look at the top it has the right url i want it's just not finding the pag
 **PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
 
 
+
+so ive found an issue while doing the css 
+![Alt text](<screenshots/username not show.png>)
+
+as we can see the user names are not showing of the people that has posted the jobs 
+
+
 ## having jobs finshes and give other users ratting
 so ran into an issue the link isn't linking to the page
 
