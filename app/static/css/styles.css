@@ -1,6 +1,6 @@
 /*===========================================================
-  PROJECT NAME HERE
-  By YOUR NAME HERE
+  PROJECT Job board app
+  By Jayden
 ===========================================================*/
 
 :root {
@@ -18,8 +18,16 @@
 /* Overall Layout -----------------------------------------------*/
 
 html {
-    background-color: var(--back-col);
+    background-color: var( --border-col);
     color: var(--text-col);
+    border: none;
+    color: var(--back-col);
+
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px; 
 
     font-family: system-ui, sans-serif;
 }
@@ -41,16 +49,21 @@ main {
 
 body > header {
     display: flex;
-    gap: 1rem;
+
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
     background-color: var(--back-col-panel);
+    box-shadow: 0 0.5rem 1rem #0007;
+
+    position: sticky;
+    top: 0;                   /* Sticks to the very top of the viewport */
+    z-index: 1000;            /* Keeps the nav above other content */
 
     nav {
         display: flex;
         gap: 1rem;
-
+        
         a {
             color: var(--back-col);
             text-decoration: none;  
@@ -133,7 +146,7 @@ main > h2 {
 .button {
     background-color: var(--accent-col);
     border: none;
-    color: white;
+    color: var(--back-col);
     padding: 5px 5px;
     text-align: center;
     text-decoration: none;
@@ -142,16 +155,24 @@ main > h2 {
     cursor: pointer;
     border-radius: 4px; 
 }
-/* html --------------------------------------------------*/
 
-html {
-    background-color: var(--border-col);
-    border: none;
-    color: white;
+/* forms --------------------------------------------------*/
+
+form {
     padding: 5px 5px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px; 
+    gap: 2rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    display: flex;
+
+    label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        border: 1px solid #ccc;
+        border-radius: 6px; /* Subtle curve */
+        padding: 8px 12px;  /* Padding keeps text from hitting the curved edge */
+        outline: none;
+    }
 }

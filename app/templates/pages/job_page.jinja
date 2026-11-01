@@ -28,7 +28,7 @@ Job page
             title="Delete job"
             onclick="return confirm('Really delete?')"
             href="/job/{{job.id}}/delete"
-                          >delete</a>
+                          >Delete</a>
 
 
 
@@ -57,17 +57,17 @@ Job page
               <a
               class="button"
               title="job info"
-              href= "/job/{{ offer.job_id }}/offers/user/{{ offer.user_id }}">see user info</a>
+              href= "/job/{{ offer.job_id }}/offers/user/{{ offer.user_id }}">See user info</a>
 
               <a
               class="button"
               title="accpte user"
-              href= "/job/{{offer.job_id}}/offers/{{ offer.offer_id }}/accept">accept offer</a>
+              href= "/job/{{offer.job_id}}/offers/{{ offer.offer_id }}/accept">Accept offer</a>
 
               <a
               class="button"
               title="remove user offer"
-              href= "/job/{{offer.job_id}}/offers/{{ offer.offer_id }}/delete">reject offer</a>
+              href= "/job/{{offer.job_id}}/offers/{{ offer.offer_id }}/delete">Reject offer</a>
 
             </div>
 

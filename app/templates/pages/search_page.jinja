@@ -7,7 +7,7 @@ search page
 
 {% block content %}
 
-    <h2>jobs</h2>
+    <h2>Jobs</h2>
 
     <section id="jobs">
 
@@ -16,13 +16,14 @@ search page
             <div class="offers-accapted">
                 <header>
                     <h3>{{ job.title }}</h3>
-                    <p class="jobs-notes">{{ job.notes }}</p>
+                    <p> {{ job.notes }}</p>
+                    <p> To be done by {{job.due_by_date}} </p>
                     <p class="author">Posted by <strong>{{ job.username }}</strong> ({{ job.username }})</p>
                 </header>
 
                 <footer>
                     {% if session.logged_in %}
-                        <p><a class="button" href="/job/{{ job.id }}/accept">apply</a></p>
+                        <p><a class="button" href="/job/{{ job.id }}/accept">Apply</a></p>
                     {% endif %}
                 </footer>
             </div>

@@ -9,27 +9,27 @@ edit job page
 
 {% block content %}
 
-    <h2>Edit job</h2>
+    <h2>Edit Job</h2>
 
     <form method="post" action="/job/{{ job.id }}/update">
 
     <label>
-      title
+      Title
       <input name="title" type="text" required>
     </label>
 
     <label>
-      notes
+      Notes
       <input name="notes" type="text" required>
     </label>
 
     <label>
-      due_by_date
+      Due by date
       <input name="due_by_date" type="date" required>
     </label>
 
     <label>
-      address
+      Address
       <input name="address" type="text" required>
     </label>
 

@@ -40,8 +40,6 @@ background colour needesd to be right so im testing how it looks
 
 i don't think it looks bad and nether do my end users 
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
-
 
 ## Testing seach page 
 
@@ -53,11 +51,33 @@ lets see what the search page looks like and if it's good or not
 
 some of the css has carred over but not all so let me fix this 
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
 
 
-## ETC...
 
+### forms 
+
+![Alt text](screenshots/css4.png)
+as you can see this form looks terable so im need to go though and fix them to look better 
+
+### improvements
+
+it looks much better now not just in terms of the layout but ive also correct some of the english like caputal letters 
+
+![Alt text](screenshots/css5.png)
+
+
+### form again
+
+while trying to do other things like have the nav fit in tot top of the screen i cam accors this some how 
+
+![Alt text](screenshots/css6.png)
+
+and i like it so im going keep it 
+
+### the nav 
+![Alt text](screenshots/css7.png)
+
+got the nave to follow the user down the page and added some shadow to it for when it over laping things with the same colour 
 
 ## Sprint Review
 
