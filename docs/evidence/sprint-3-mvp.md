@@ -62,18 +62,24 @@ so it wasn't bad and i got it to work but we are also going finsh the job on thi
 if you look at the top it has the right url i want it's just not finding the page 
 
 
-**PLACE SCREENSHOTS AND/OR ANIMATED GIFS OF THE IMPROVED SYSTEM HERE**
 
 
+### css sprint 3 issues
 
 so ive found an issue while doing the css 
 ![Alt text](<screenshots/username not show.png>)
 
 as we can see the user names are not showing of the people that has posted the jobs 
 
+![Alt text](screenshots/css9.png)
 
-## having jobs finshes and give other users ratting
-so ran into an issue the link isn't linking to the page
+
+### new page 
+
+while doing css coding i realize i wanted a page where users could see their own information 
+so i made it 
+
+![Alt text](screenshots/css-ish8.png)
 
 
 ## Sprint Review

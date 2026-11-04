@@ -47,11 +47,11 @@ Test User 2:
 - Password: test
 
 Test User 3:
-- Username: 
+- Username: jim
 - Password: test
 
 Test User 4:
-- Username: 
+- Username: sue
 - Password: test
 ...
 

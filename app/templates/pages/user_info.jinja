@@ -1,0 +1,32 @@
+{#=====================================================
+user page
+=====================================================#}
+{% extends 'pages/_base.jinja' %}
+
+{% block content %}
+
+<h2> your info </h2>
+
+          <div class="user-item">
+            <header>
+                <h3>{{ user.real_name }}</h3>
+            </header>
+            
+            <p>username: {{ user.username }}</p>
+            <p> real name: {{ user.realname }}</p>
+            <p>contact info: {{ user.contact_info }}</p>
+              
+              {% if ratings | length > 0 %}
+                <ul>
+                <h3>rating</h3>
+                  {%for rating in ratings %}
+                  <p> {{ rating }} </p>
+                  {%endfor%}
+                </ul>
+              {% else %}
+              <p>None</p>
+              {%endif%}
+            
+          </div>
+
+{% endblock %}

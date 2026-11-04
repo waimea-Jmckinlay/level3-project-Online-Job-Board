@@ -89,6 +89,46 @@ def return_user():
 @app.get("/job/new")
 def show_job_form():
     return render_template("pages/make_job_page.jinja")
+#---------------------------------------------------------------
+# user_info page
+#---------------------------------------------------------------
+@app.get("/user_info")
+def show_your_info():
+    with connect_db() as db:
+        user_info = session.get("user")
+        if user_info is not None:
+            user_id = user_info.get("id")
+            
+            if user_id is not None:
+
+                sql = """
+                SELECT id,
+                       username,
+                       real_name AS realname, 
+                       contact_info
+                FROM users
+                WHERE users.id = ?
+               """
+                
+
+                params = (user_id,) 
+                user = db.execute(sql, params).fetchone()
+
+
+                sql = """
+                        SELECT rating 
+                        FROM offers 
+                        WHERE user_id = ? AND rating IS NOT NULL AND TRIM(rating) != ''
+                    """
+            params = (user_id,)
+            ratings = db.execute(sql, params).fetchall()           
+
+
+
+        return render_template("pages/user_info.jinja", user=user, ratings=ratings)
+
+
+
 
 #------------------------------------------------------------
 # handle make job page
