@@ -68,7 +68,7 @@ it looks much better now not just in terms of the layout but ive also correct so
 
 ### form again
 
-while trying to do other things like have the nav fit in tot top of the screen i cam accors this some how 
+while trying to do other things like have the nav fit in tot top of the screen i can accors this some how 
 
 ![Alt text](screenshots/css6.png)
 

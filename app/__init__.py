@@ -114,15 +114,7 @@ def process_new_job():
 
             flash("Job created", "success")   
             
-            sql = """
-                SELECT id, title, notes, due_by_date, address, user_id
-                FROM jobs 
-                WHERE user_id = ?
-            """
-            params = (user_id,)
-            jobs = db.execute(sql, params).fetchall()
-
-    return render_template("pages/homepage.jinja", jobs=jobs)
+    return redirect("/")
 
 # -----------------------------------------------------------
 # seach page

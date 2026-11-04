@@ -8,22 +8,24 @@ Job page
 
 
 
-          <div class="jobs-item">
+          <div class="user-item">
             <header>
                 <h3>{{ user.real_name }}</h3>
             </header>
             
             <p>{{ user.username }}</p>
             <p>{{ user.contact_info }}</p>
-              <ul>
+              
               {% if ratings | length > 0 %}
-              {%for rating in ratings %}
-              <p> {{ rating }} </p>
-              {%endfor%}
+                <ul>
+                  {%for rating in ratings %}
+                  <p> {{ rating }} </p>
+                  {%endfor%}
+                </ul>
               {% else %}
-              <P>None</P>
+              <p>None</p>
               {%endif%}
-            </ul>
+            
           </div>
 
   <a
