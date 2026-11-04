@@ -51,7 +51,7 @@ lets see what the search page looks like and if it's good or not
 
 some of the css has carred over but not all so let me fix this 
 
-
+![Alt text](screenshots/css10.png)
 
 
 ### forms 
