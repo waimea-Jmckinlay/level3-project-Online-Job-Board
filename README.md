@@ -1,5 +1,5 @@
 # job board app Project
-
+by Jayden Mckinlay
 ## Project Description
 
 lets people post jobs r and chores for others who can accapt 
@@ -20,7 +20,8 @@ The site is hosted on **Render.com** and can be [accessed live at this link](htt
 
 
 ## Supporting Documents
-all documataion is posted on [github pages]https://waimea-jmckinlay.github.io/level3-project-Online-Job-Board/ 
+
+all documataion is posted on [github pages](https://waimea-jmckinlay.github.io/level3-project-Online-Job-Board/) 
 
 
 Task Instructions:
