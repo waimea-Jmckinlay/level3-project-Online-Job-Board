@@ -1,6 +1,6 @@
 #===========================================================
-# PROJECT NAME HERE
-# By YOUR NAME HERE
+# PROJECT Job board
+# By YOUR Jayden Mckinlay
 #===========================================================
 
 from flask import Flask, request, session, render_template, flash, redirect, send_file, make_response
@@ -41,7 +41,7 @@ def return_user():
             sql = """
                 SELECT id, title, notes, due_by_date, address, user_id
                 FROM jobs 
-                WHERE user_id = ? AND done = 0
+                WHERE user_id = ?
             """
             params = (user_id,)
             jobs = db.execute(sql, params).fetchall()
@@ -51,13 +51,12 @@ def return_user():
                     jobs.title,
                     jobs.notes,
                     offers.accepted,
-                    offers.job_id,
-                    offers.id
+                    offers.job_done
 
                 FROM offers
                 JOIN jobs ON offers.job_id = jobs.id
 
-                WHERE offers.user_id = ? AND jobs.done = 0
+                WHERE offers.user_id = ?
             """
             params = (user_id, )
             offers = db.execute(sql, params).fetchall()
@@ -89,46 +88,6 @@ def return_user():
 @app.get("/job/new")
 def show_job_form():
     return render_template("pages/make_job_page.jinja")
-#---------------------------------------------------------------
-# user_info page
-#---------------------------------------------------------------
-@app.get("/user_info")
-def show_your_info():
-    with connect_db() as db:
-        user_info = session.get("user")
-        if user_info is not None:
-            user_id = user_info.get("id")
-            
-            if user_id is not None:
-
-                sql = """
-                SELECT id,
-                       username,
-                       real_name AS realname, 
-                       contact_info
-                FROM users
-                WHERE users.id = ?
-               """
-                
-
-                params = (user_id,) 
-                user = db.execute(sql, params).fetchone()
-
-
-                sql = """
-                        SELECT rating 
-                        FROM offers 
-                        WHERE user_id = ? AND rating IS NOT NULL AND TRIM(rating) != ''
-                    """
-            params = (user_id,)
-            ratings = db.execute(sql, params).fetchall()           
-
-
-
-        return render_template("pages/user_info.jinja", user=user, ratings=ratings)
-
-
-
 
 #------------------------------------------------------------
 # handle make job page
@@ -154,7 +113,15 @@ def process_new_job():
 
             flash("Job created", "success")   
             
-    return redirect("/")
+            sql = """
+                SELECT id, title, notes, due_by_date, address, user_id
+                FROM jobs 
+                WHERE user_id = ?
+            """
+            params = (user_id,)
+            jobs = db.execute(sql, params).fetchall()
+
+    return render_template("pages/homepage.jinja", jobs=jobs)
 
 # -----------------------------------------------------------
 # seach page
@@ -170,16 +137,8 @@ def find_job():
          
         if user_id != None:
             sql = """
-            SELECT jobs.id, 
-                    jobs.title, 
-                    jobs.notes, 
-                    jobs.due_by_date, 
-                    jobs.address, 
-                    jobs.user_id, 
-                    users.username,
-                    users.id
+            SELECT id, title, notes, due_by_date, address, user_id
             FROM jobs
-            JOIN users on jobs.user_id = users.id
 
         """
         params = ()
@@ -333,7 +292,7 @@ def process_delete_job(id):
         return redirect("/")
 
 #----------------------------------------------------------------
-# other user accapted jobs funchtion 
+#accapted jobs funchtion 
 #--------------------------------------------------------------
 @app.get("/job/<int:id>/accept")
 @login_required
@@ -427,13 +386,9 @@ def show_job_Offer_form(id):
         job = db.execute(sql, params).fetchone()
 
         sql = """
-            SELECT 
-                users.username,
-                users.real_name,
-                users.id AS user_id,
-                offers.id AS offer_id,
-                offers.job_id,
-                offers.accepted
+            SELECT
+                offers.user_id 
+                users.username
 
                 FROM offers
                 JOIN users ON offers.user_id = users.id
@@ -443,114 +398,46 @@ def show_job_Offer_form(id):
         params = (id,)
         offers = db.execute(sql, params).fetchall()
 
+        sql = """
+            SELECT * FROM users
+            """
+        params = ()
+        users = db.execute(sql, params).fetchall()
+
+
         # Security check: Ensure job exists and belongs to the logged-in user
         if job and job["user_id"] == session["user"]["id"]:
-            return render_template("pages/job_page.jinja", job=job, offers=offers,)
+            return render_template("pages/job_page.jinja", job=job, users=users, offers=offers,)
 
         flash("Job not found or unauthorized access", "error")
         return redirect("/")
-    
-#===========================================================
-# handle click on user 
-#===========================================================
-@app.get("/job/<int:job_id>/offers/user/<int:user_id>") 
+
+#==========================================================
+# see other users detailes
+#==========================================================
+@app.get("/job/<int:offers.user_id>/show")
 @login_required
-def show_applyed_user(job_id, user_id):
+def show_user_form(user_id):
     with connect_db() as db:
-         
         sql = """
-            SELECT * FROM users where id = ?
+            SELECT * FROM jobs WHERE id = ?
         """
         params = (user_id,)
-        user = db.execute(sql, params).fetchone()
+        job = db.execute(sql, params).fetchone()
 
         sql = """
-            SELECT rating 
-            FROM offers 
-            WHERE user_id = ? AND rating IS NOT NULL AND TRIM(rating) != ''
+            SELECT
+                offers.user_id,
+                users.username,
+                users.rating
+            FROM offers
+            JOIN users ON offers.user_id = users.id
+            WHERE offers.job_id = ?
         """
         params = (user_id,)
-        ratings = db.execute(sql, params).fetchall()
+        offers = db.execute(sql, params).fetchall()
 
-
-    return render_template("pages/user_info_page.jinja", user=user, ratings=ratings, job_id=job_id)
-
-
-#===========================================================
-# handle accepting user
-#===========================================================
-@app.get("/job/<int:job_id>/offers/<int:offer_id>/accept") 
-@login_required
-def accept_applyed_user(job_id, offer_id):
-    with connect_db() as db:
-
-        sql = """
-           UPDATE offers
-            SET accepted = 1
-            WHERE id = ?
-        """
-        params = (offer_id,)
-        db.execute(sql, params)
-
-
-    return redirect(f"/job/{job_id}/job_offers")
-
-#===========================================================
-# remove applyed user
-#===========================================================
-@app.get("/job/<int:job_id>/offers/<int:offer_id>/delete") 
-@login_required
-def remove_applyed_user(job_id, offer_id):
-    with connect_db() as db:
-         
-
-        sql = """
-            DELETE FROM offers
-            WHERE offers.id = ?
-        """
-        params = (offer_id,)
-        db.execute(sql, params)
-
-
-    return redirect(f"/job/{job_id}/job_offers")
-
-#===========================================================
-# complete job button 
-#===========================================================
-@app.get("/job/<int:job_id>/offer/<int:offer_id>/complete") 
-@login_required
-def finsh_job( job_id, offer_id):
-    return render_template("pages/give_rating.jinja", job_id = job_id, offer_id=offer_id, )
-
-#=========================================================== 
-# complet job post 
-#===========================================================
-@app.post("/job/<int:job_id>/offer/<int:offer_id>/rating") 
-@login_required
-def finsh_job_post( job_id, offer_id):
-    rating = request.form.get("rating", "").strip()
-    with connect_db() as db:
-
-        sql = """
-            UPDATE offers SET
-            rating = ?
-            WHERE offers.id = ?
-            """
-        
-        params = (rating, offer_id, )
-        db.execute(sql, params)
-
-        sql = """
-            UPDATE jobs SET
-            done = 1
-            WHERE id = ?
-            """
-        
-        params = (job_id, )
-        db.execute(sql, params)
-
-    return redirect ( "/" )
-
+    return render_template("pages/job_page.jinja", job=job, offers=offers)
 #===========================================================
 # Configure the app
 #===========================================================
